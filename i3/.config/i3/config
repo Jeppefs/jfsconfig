@@ -225,5 +225,5 @@ exec_always clipmenud
 # Startup scripts
 # -------------------------------------------------------------------------------- 
 
-exec "bash $myconfig/startup/launch.sh"
+exec "bash $HOME/myconfig/scripts/startup/launch.sh"
 #exec --no-startup-id "i3-msg 'workspace $WS1'"
