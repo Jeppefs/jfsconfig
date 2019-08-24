@@ -55,7 +55,6 @@ set belloff=all
 
 " Advanced
 set ruler	
-set 
  
 set undolevels=1000	
 " set backspace=indent,eol,start	

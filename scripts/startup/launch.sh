@@ -5,16 +5,16 @@ i3-msg 'workspace 2; exec firefox'
 sleep 1
 
 i3-msg workspace 5
-code /$HOME/myconfig
-kitty 
-echo "cd /$HOMR/myconfig"
+code $HOME/myconfig
+kitty --hold
+echo "cd $HOME/myconfig"
 
 i3-msg 'workspace 8; exec spotify'
 i3-msg 'workspace 8; exec discord'
 
 i3-msg workspace Welcome 
 sleep 1
-code /$HOME/Dropbox/Lists
+code $HOME/Dropbox/Lists
 sleep 1
 i3-msg 'workspace Welcome; exec kitty' 
 sleep 1

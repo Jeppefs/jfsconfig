@@ -55,6 +55,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+s exec dmenu_extended_run 
 bindsym $mod+Tab exec rofi -show window
+bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # -------------------------------------------------------------------------------- 
 # Focus 
@@ -200,6 +201,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # -------------------------------------------------------------------------------- 
 # Gaps 
@@ -212,14 +214,14 @@ gaps outer 0
 smart_borders on
 
 # -------------------------------------------------------------------------------- 
-# Startup application executions
+# Startup application daemons executions
 # -------------------------------------------------------------------------------- 
 
 exec_always nm-applet
 exec_always compton -b --config ~/.config/compton/compton.conf
 exec_always dropbox
 exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg 
-exec_always clipmenud
+exec_always --no-startup-id systemctl --user start greenclip.service
 
 # -------------------------------------------------------------------------------- 
 # Startup scripts
