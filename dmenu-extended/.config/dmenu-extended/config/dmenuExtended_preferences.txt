@@ -2,11 +2,11 @@
     "alias_applications": true,
     "alias_display_format": "{name}",
     "exclude_items": [],
-    "filebrowser": "kitty ranger",
+    "filebrowser": "kitty -d",
     "fileopener": "xdg-open",
     "filter_binaries": false,
     "follow_symlinks": false,
-    "frequently_used": 0,
+    "frequently_used": 1,
     "global_ignore_folders": [],
     "ignore_folders": [],
     "include_applications": true,
@@ -68,7 +68,7 @@
         "sublime-project"
     ],
     "watch_folders": [
-        "~/"
+        "~"
     ],
     "webbrowser": "xdg-open"
 }

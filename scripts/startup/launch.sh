@@ -10,8 +10,8 @@ i3-msg 'workspace 5; exec kitty -d $HOME/myconfig'
 sleep 1
 
 i3-msg workspace Welcome 
-sleep 1
-i3-msg 'workspace Welcome; code $HOME/Dropbox/Lists'
+sleep 5
+i3-msg 'workspace Welcome; exec code $HOME/Dropbox/Lists'
 sleep 1
 i3-msg 'workspace Welcome; exec kitty' 
 sleep 1
@@ -22,3 +22,6 @@ sleep 5
 i3-msg 'workspace 8; exec spotify'
 sleep 1
 i3-msg 'workspace 8; exec discord'
+sleep 1
+
+i3-msg workspace Welcome 
