@@ -28,7 +28,9 @@ set $startup /$HOME/scripts/startup
 # Font 
 # -------------------------------------------------------------------------------- 
 
-font pango:monospace 8
+#font pango: Source Code Pro 10 
+font pango:SauceCodePro Nerd Font 8
+#font pango:monospace 10
 #font pango:Ubuntu Nerd Font 8
 
 # -------------------------------------------------------------------------------- 
