@@ -13,9 +13,7 @@
     "include_binaries": false,
     "include_hidden_files": true,
     "include_hidden_folders": true,
-    "include_items": [
-        "htop;"
-    ],
+    "include_items": [],
     "indicator_alias": "",
     "indicator_edit": "*",
     "indicator_submenu": "->",

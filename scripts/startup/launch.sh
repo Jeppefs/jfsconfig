@@ -1,3 +1,5 @@
+dmenu_extended_cache_build
+
 i3-msg 'workspace 1; exec kitty' 
 sleep 1 
 
