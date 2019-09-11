@@ -221,7 +221,7 @@ smart_borders on
 
 exec_always nm-applet
 exec_always compton -b --config ~/.config/compton/compton.conf
-exec_always dropbox
+exec_always dropbox -b 
 exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg 
 exec_always --no-startup-id systemctl --user start greenclip.service
 
