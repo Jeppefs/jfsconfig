@@ -14,7 +14,8 @@ polybar example &
 echo "Polybar launched..."
 
 ## Launch Programs
-i3-msg 'workspace 1; exec kitty' 
+i3-msg 'workspace 1; exec kitty -o background_opacity=0.8' 
+i3-msg 'move scratchpad'
 sleep 1 
 
 i3-msg 'workspace 2; exec firefox'

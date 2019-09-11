@@ -43,6 +43,10 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# scratchpad
+bindsym $mod+y scratchpad show
+bindsym $mod+shift+y move scratchpad 
+
 # -------------------------------------------------------------------------------- 
 # Application hotkey spawns 
 # -------------------------------------------------------------------------------- 
@@ -109,7 +113,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+z focus parents.j
+bindsym $mod+z focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -224,10 +228,11 @@ exec_always compton -b --config ~/.config/compton/compton.conf
 exec_always dropbox -b 
 exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg 
 exec_always --no-startup-id systemctl --user start greenclip.service
+exec_always flameshot
 
 # -------------------------------------------------------------------------------- 
 # Startup scripts
 # -------------------------------------------------------------------------------- 
 
 exec "bash $HOME/myconfig/scripts/startup/launch.sh"
-#exec --no-startup-id "i3-msg 'workspace $WS1'"
+#exec --no-startup-id "i3-msg 'workspace $WS1'" 
