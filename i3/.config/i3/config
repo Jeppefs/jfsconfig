@@ -54,7 +54,7 @@ bindsym $mod+Return exec kitty
 # 1. Application 
 # 2. Files
 # 3. Running
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run 
 bindsym $mod+Tab exec rofi -show window
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
