@@ -1,0 +1,41 @@
+{
+    "editor.fontSize": 13,
+    "editor.minimap.maxColumn": 100,
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 100,
+    "editor.minimap.renderCharacters": false,
+
+    "workbench.colorTheme": "Horizon",
+    "keyboard.dispatch": "keyCode",
+
+    "html.format.wrapLineLength": 100,
+    "[markdown]": {
+        "editor.wordWrap": "bounded",
+        "editor.wordWrapColumn": 100
+    },
+    "[markdown-preview-enhanced]": {
+        "enableExtendedTableSyntax": true,
+        "enableHTML5Embed": true,
+        "enableScriptExecution": true,
+        "enableTypographer": true,
+        "HTML5EmbedUseLinkSyntax": true
+    },
+    "workbench.activityBar.visible": false,
+    "workbench.sideBar.location": "right",
+    "window.menuBarVisibility": "toggle",
+    "editor.fontFamily": "'Source Code Pro'",
+    "markdown-preview-enhanced.previewTheme": "monokai.css",
+    "latex-workshop.view.pdf.viewer": "external",
+    "go.lintOnSave": "off",
+    "editor.minimap.showSlider": "always",
+    "workbench.iconTheme": "material-icon-theme",
+
+    "vim.useSystemClipboard": true,
+    "vim.foldfix": true,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+        
+    "files.associations": {
+        "config": "properties"
+    }
+}

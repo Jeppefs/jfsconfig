@@ -61,7 +61,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+d exec rofi -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run 
 bindsym $mod+Tab exec rofi -show window
-bindcode --release 133 exec rofi -show window -kb-cancel Super_L
+#bindcode --release 133 exec rofi -show window -kb-cancel Super_L
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # -------------------------------------------------------------------------------- 
@@ -137,10 +137,10 @@ bindsym $mod+0 workspace $ws10
 
 bindsym $mod+q workspace $wsWelcome
 
-bindsym --whole-window --border $mod+shift+button4 focus left 
-bindsym --whole-window --border $mod+shift+button5 focus right
-bindsym --whole-window --border $mod+button4 workspace prev
-bindsym --whole-window --border $mod+button5 workspace next
+bindsym --whole-window --border $mod+shift+button5 focus left 
+bindsym --whole-window --border $mod+shift+button4 focus right
+bindsym --whole-window --border $mod+button5 workspace prev
+bindsym --whole-window --border $mod+button4 workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
