@@ -8,7 +8,8 @@ export ZSH="/home/jfs/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="bira"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,7 +56,13 @@ plugins=(autojump git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# 
 # User configuration
+#
+
+# Disable underline path
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
