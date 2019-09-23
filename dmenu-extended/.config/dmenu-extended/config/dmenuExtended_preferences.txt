@@ -9,7 +9,7 @@
     "frequently_used": 1,
     "global_ignore_folders": [],
     "ignore_folders": [],
-    "include_applications": true,
+    "include_applications": false,
     "include_binaries": false,
     "include_hidden_files": true,
     "include_hidden_folders": true,
@@ -66,7 +66,12 @@
         "sublime-project"
     ],
     "watch_folders": [
-        "~"
+        "~/.*",
+        "~/myconfig",
+        "~/core"
+    ],
+    "ignore_folders": [
+        "~/myconfig/.git"
     ],
     "webbrowser": "xdg-open"
 }
