@@ -52,18 +52,48 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump git zsh-syntax-highlighting)
+plugins=(autojump git zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-# 
+# --------------------------------------------------------------------------------  
 # User configuration
-#
+# --------------------------------------------------------------------------------  
+
+# Set default editor to vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # Disable underline path
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+# Add vi keybinding (source: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52 )
+bindkey -v
+export KEYTIMEOUT=1
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
