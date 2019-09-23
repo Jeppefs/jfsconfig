@@ -1,13 +1,22 @@
 {
+    // Editor
     "editor.fontSize": 13,
     "editor.minimap.maxColumn": 100,
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 100,
     "editor.minimap.renderCharacters": false,
+    "editor.fontFamily": "'Source Code Pro'",
+    "editor.minimap.showSlider": "always",
 
+    // Woerkbench
+    "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Horizon",
+    "workbench.activityBar.visible": false,
+    "workbench.sideBar.location": "right",
     "keyboard.dispatch": "keyCode",
+    "window.menuBarVisibility": "toggle",
 
+    // Markdown
     "html.format.wrapLineLength": 100,
     "[markdown]": {
         "editor.wordWrap": "bounded",
@@ -20,21 +29,21 @@
         "enableTypographer": true,
         "HTML5EmbedUseLinkSyntax": true
     },
-    "workbench.activityBar.visible": false,
-    "workbench.sideBar.location": "right",
-    "window.menuBarVisibility": "toggle",
-    "editor.fontFamily": "'Source Code Pro'",
     "markdown-preview-enhanced.previewTheme": "monokai.css",
     "latex-workshop.view.pdf.viewer": "external",
-    "go.lintOnSave": "off",
-    "editor.minimap.showSlider": "always",
-    "workbench.iconTheme": "material-icon-theme",
 
+    // Vim 
     "vim.useSystemClipboard": true,
     "vim.foldfix": true,
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/bin/nvim",
-        
+    "vim.sneak": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+      
+    // Language specific
+    "go.lintOnSave": "off",
+
+    // File association
     "files.associations": {
         "config": "properties"
     }
