@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/jfs/core/images/fest/gymnasium'
+let g:netrw_dirhist_1='/home/jfs/core/images/fest'
+let g:netrw_dirhist_0='/home/jfs/core/images/wallpapers'
+let g:netrw_dirhist_9='/home/jfs/core/images'
+let g:netrw_dirhist_8='/home/jfs/core/documents/recipes'
+let g:netrw_dirhist_7='/home/jfs/core/documents'
+let g:netrw_dirhist_6='/home/jfs/core'
+let g:netrw_dirhist_5='/home/jfs/Downloads'
+let g:netrw_dirhist_4='/home/jfs/Dropbox/Jobsøgning'
+let g:netrw_dirhist_3='/home/jfs/Downloads'

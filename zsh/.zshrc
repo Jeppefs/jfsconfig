@@ -47,26 +47,41 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load?
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump git zsh-syntax-highlighting vi-mode)
+plugins=(autojump git zsh-syntax-highlighting vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# SSH connection
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 
 # --------------------------------------------------------------------------------  
 # User configuration
 # --------------------------------------------------------------------------------  
 
-# Set default editor to vim
-export VISUAL=vim
+# Kitty specific stuff
+autoload -Uz compinit
+compinit
+kitty + complete setup zsh | source /dev/stdin
+
+# Set default editor to nvim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Disable underline path
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+# ZSH_HIGHLIGHT_STYLES[path]=none
+# ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Add vi keybinding (source: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52 )
 bindkey -v
@@ -94,20 +109,13 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
-# export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# FZF settings (source: https://medium.com/@_ahmed_ab/crazy-super-fast-fuzzy-search-9d44c29e14f)
+export FZF_DEFAULT_OPTS='--height=70% --preview="nvim {}" --preview-window=right:50%:wrap'
+# export FZF_DEFAULT_COMMAND='rg --files'
+# export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# Aliases
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

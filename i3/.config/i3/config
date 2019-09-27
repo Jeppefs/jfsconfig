@@ -45,7 +45,7 @@ bindsym $mod+Shift+q kill
 
 # scratchpad
 bindsym $mod+y scratchpad show
-bindsym $mod+shift+y move scratchpad 
+bindsym $mod+Shift+y move scratchpad 
 
 # -------------------------------------------------------------------------------- 
 # Application hotkey spawns 
@@ -140,8 +140,8 @@ bindsym $mod+space workspace back_and_forth
 
 bindsym $mod+q workspace $wsWelcome
 
-bindsym --whole-window --border $mod+shift+button5 focus left 
-bindsym --whole-window --border $mod+shift+button4 focus right
+bindsym --whole-window --border $mod+Shift+button5 focus left 
+bindsym --whole-window --border $mod+Shift+button4 focus right
 bindsym --whole-window --border $mod+button5 workspace prev
 bindsym --whole-window --border $mod+button4 workspace next
 
@@ -167,6 +167,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# See all keybindings
+# bindsym $mod+shift+m exec "i3keys web 8000"
 
 
 # -------------------------------------------------------------------------------- 
