@@ -115,7 +115,16 @@ export FZF_DEFAULT_OPTS='--height=70% --preview="nvim {}" --preview-window=right
 # export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
+
+fd() { 
+  local dir 
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d \ -print 2> /dev/null | fzf +m) && 
+  "$dir"
+}
+
 # Aliases
+alias kico='kitty +kitten clipboard'
+alias gitall='git add * && git commit -m'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
