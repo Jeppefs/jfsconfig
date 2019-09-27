@@ -7,6 +7,8 @@
     "editor.minimap.renderCharacters": false,
     "editor.fontFamily": "'Source Code Pro'",
     "editor.minimap.showSlider": "always",
+    
+    "files.autoSave": "onFocusChange",
 
     // Woerkbench
     "workbench.iconTheme": "material-icon-theme",
@@ -22,13 +24,13 @@
         "editor.wordWrap": "bounded",
         "editor.wordWrapColumn": 100
     },
-    "[markdown-preview-enhanced]": {
-        "enableExtendedTableSyntax": true,
-        "enableHTML5Embed": true,
-        "enableScriptExecution": true,
-        "enableTypographer": true,
-        "HTML5EmbedUseLinkSyntax": true
-    },
+
+    "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+    "markdown-preview-enhanced.enableHTML5Embed": true,
+    "markdown-preview-enhanced.enableScriptExecution": true,
+    "markdown-preview-enhanced.enableTypographer": true,
+    "markdown-preview-enhanced.HTML5EmbedUseLinkSyntax": true,
+    
     "markdown-preview-enhanced.previewTheme": "monokai.css",
     "latex-workshop.view.pdf.viewer": "external",
 
@@ -39,6 +41,8 @@
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.sneak": true,
     "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.replaceWithRegister": true,
+    "vim.camelCaseMotion.enable": true,
       
     // Language specific
     "go.lintOnSave": "off",
