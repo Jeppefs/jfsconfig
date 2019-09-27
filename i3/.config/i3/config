@@ -60,7 +60,7 @@ bindsym $mod+Return exec kitty
 # 3. Running
 bindsym $mod+d exec rofi -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run
-bindsym $mod+Tab exec rofi -show window
+bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
 #bindcode --release 133 exec rofi -show window -kb-cancel Super_L
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
@@ -109,10 +109,10 @@ bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym "$mod+Shift+," floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym "$mod+," focus mode_toggle
 
 # focus the parent container
 bindsym $mod+z focus parent
@@ -135,6 +135,8 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+bindsym $mod+space workspace back_and_forth
 
 bindsym $mod+q workspace $wsWelcome
 
