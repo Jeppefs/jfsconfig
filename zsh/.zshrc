@@ -111,7 +111,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # FZF settings (source: https://medium.com/@_ahmed_ab/crazy-super-fast-fuzzy-search-9d44c29e14f)
-export FZF_DEFAULT_OPTS='--height=70% --preview="nvim {}" --preview-window=right:50%:wrap'
+export FZF_DEFAULT_OPTS='--height=70% --preview="nvim {}" --preview-window=right:50%:wrap --bind=tab:up,btab:down'
 # export FZF_DEFAULT_COMMAND='rg --files'
 # export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
