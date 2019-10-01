@@ -128,6 +128,7 @@ alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
 
 # Keybindings
+# bindkey ^b 
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh

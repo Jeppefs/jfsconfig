@@ -73,7 +73,8 @@
         "~/Downloads"
     ],
     "ignore_folders": [
-        "~/myconfig/.git"
+        "~/myconfig/.git",
+        "~/core/games/magic-the-gathering-arena"
     ],
     "global_ignore_folders": [
         ".git",
