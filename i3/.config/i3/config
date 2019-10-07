@@ -60,6 +60,7 @@ bindsym $mod+Return exec kitty
 # 3. Running
 bindsym $mod+d exec rofi -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run
+bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -dmenu)"
 bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
 #bindcode --release 133 exec rofi -show window -kb-cancel Super_L
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'

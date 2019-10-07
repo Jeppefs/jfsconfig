@@ -1,3 +1,9 @@
 rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi
+# rofi.font: SauceCodePro Nerd Font 12
+# rofi.font: Noto sans 12
 rofi.lines: 20
-rofi.modi: window,run,ssh,drun,file-browser,windowcd,combi,keys,calc
+rofi.modi: window,run,ssh,drun,file-browser,windowcd,combi,keys,calc,emoji
+
+rofi.show-icons: true
+# rofi.icon-theme: luv-icon-theme
+

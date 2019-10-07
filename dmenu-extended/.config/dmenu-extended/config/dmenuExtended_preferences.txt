@@ -17,7 +17,6 @@
     "indicator_submenu": "->",
     "menu": "rofi",
     "menu_arguments": [
-        "-show-icons -icon-theme luv-icon-theme",
         "-dmenu",
         "-i"
     ],

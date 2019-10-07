@@ -61,9 +61,9 @@ export LANG=en_US.UTF-8
 
 # SSH connection
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
+	export EDITOR='nvim'
 else
-  export EDITOR='vim'
+	export EDITOR='vim'
 fi
 
 # --------------------------------------------------------------------------------  
@@ -88,20 +88,20 @@ bindkey -v
 export KEYTIMEOUT=1
 
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
+	if [[ ${KEYMAP} == vicmd ]] ||
+		 [[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] ||
+			 [[ ${KEYMAP} == viins ]] ||
+			 [[ ${KEYMAP} = '' ]] ||
+			 [[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+	fi
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+		echo -ne "\e[5 q"
 }
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
@@ -111,24 +111,29 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # FZF settings (source: https://medium.com/@_ahmed_ab/crazy-super-fast-fuzzy-search-9d44c29e14f)
-export FZF_DEFAULT_OPTS='--height=70% --preview="nvim {}" --preview-window=right:50%:wrap --bind=tab:up,btab:down'
-# export FZF_DEFAULT_COMMAND='rg --files'
-# export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+export FZF_DEFAULT_COMMAND='rg --files --glob '!magic-the-gathering-arena''
+export FZF_DEFAULT_OPTS='--height=70% --layout=reverse --preview="nvim {}" --preview-window=right:50%:wrap --bind=tab:down,btab:up,ctrl-space:toggle+down'
+export FZF_CTRL_T_COMMAND='rg --files --glob '!magic-the-gathering-arena''
+# export FZF_CTRL_R_COMMAND='print -rl -- ${(u)${(f)"$( rg --hidden --files $1 2> /dev/null )"}:h}'
+# export FZF_ALT_C_COMMAND='fi'
 
 
 fd() { 
-  local dir 
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d \ -print 2> /dev/null | fzf +m) && 
-  "$dir"
+	local dir 
+	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d \ -print 2> /dev/null | fzf +m) && 
+	"$dir"
 }
 
 # Aliases
-alias kico='kitty +kitten clipboard'
+alias copy='| kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
+alias pS='sudo pacman -S'
 
 # Keybindings
-# bindkey ^b 
+function copyPath() {pwd | kitty +kitten clipboard}
+zle -N copyPath
+bindkey ^b copyPath 
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
