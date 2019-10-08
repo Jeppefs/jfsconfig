@@ -1,6 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# --------------------------------------------------------------------------------  
+# Impartant default configs
+# --------------------------------------------------------------------------------  
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jfs/.oh-my-zsh"
 
@@ -51,7 +55,6 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Which plugins would you like to load?
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(autojump git zsh-syntax-highlighting vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
@@ -67,10 +70,9 @@ else
 fi
 
 # --------------------------------------------------------------------------------  
-# User configuration
+# Kitty
 # --------------------------------------------------------------------------------  
 
-# Kitty specific stuff
 autoload -Uz compinit
 compinit
 kitty + complete setup zsh | source /dev/stdin
@@ -79,9 +81,9 @@ kitty + complete setup zsh | source /dev/stdin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# Disable underline path
-# ZSH_HIGHLIGHT_STYLES[path]=none
-# ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+# --------------------------------------------------------------------------------  
+# Custom Widgets 
+# --------------------------------------------------------------------------------  
 
 # Add vi keybinding (source: https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52 )
 bindkey -v
@@ -110,27 +112,73 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# FZF settings (source: https://medium.com/@_ahmed_ab/crazy-super-fast-fuzzy-search-9d44c29e14f)
+# --------------------------------------------------------------------------------  
+# FZF
+# --------------------------------------------------------------------------------
+
+# Changes to default fzf commands
 export FZF_DEFAULT_COMMAND='rg --files --glob '!magic-the-gathering-arena''
 export FZF_DEFAULT_OPTS='--height=70% --layout=reverse --preview="nvim {}" --preview-window=right:50%:wrap --bind=tab:down,btab:up,ctrl-space:toggle+down'
 export FZF_CTRL_T_COMMAND='rg --files --glob '!magic-the-gathering-arena''
 # export FZF_CTRL_R_COMMAND='print -rl -- ${(u)${(f)"$( rg --hidden --files $1 2> /dev/null )"}:h}'
 # export FZF_ALT_C_COMMAND='fi'
 
+# --------------------------------------------------------------------------------  
+# Custom functions
+# --------------------------------------------------------------------------------
 
-fd() { 
-	local dir 
-	dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d \ -print 2> /dev/null | fzf +m) && 
-	"$dir"
+# Terminal global path using fzf just like ALT_C 
+__fsel() {
+  local cmd="find . type -d find ~ -type d \( -path "*.git" -o -path "*magic-the-gathering-arena" -o -path "*.dropbox*" \) -prune -o -print | fzf"
+    
+  setopt localoptions pipefail 2> /dev/null
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" $(__fzfcmd) -m "$@" | while read item; do
+    echo -n "${(q)item} "
+  done
+  local ret=$?
+  echo
+  return $ret
 }
 
+__fzf_use_tmux__() {
+  [ -n "$TMUX_PANE" ] && [ "${FZF_TMUX:-0}" != 0 ] && [ ${LINES:-40} -gt 15 ]
+}
+
+__fzfcmd() {
+  __fzf_use_tmux__ &&
+    echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
+}
+
+fzf-file-widget() {
+  LBUFFER="${LBUFFER}$(__fsel)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N   fzf-file-widget
+bindkey '^O' fzf-file-widget
+
+fzf-redraw-prompt() {
+  local precmd
+  for precmd in $precmd_functions; do
+    $precmd
+  done
+  zle reset-prompt
+}
+zle -N fzf-redraw-prompt
+
+# --------------------------------------------------------------------------------  
 # Aliases
+# --------------------------------------------------------------------------------
+
 alias copy='| kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
 alias pS='sudo pacman -S'
 
+# --------------------------------------------------------------------------------  
 # Keybindings
+# --------------------------------------------------------------------------------
 function copyPath() {pwd | kitty +kitten clipboard}
 zle -N copyPath
 bindkey ^b copyPath 

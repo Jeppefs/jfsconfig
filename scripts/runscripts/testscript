@@ -1,2 +1,2 @@
 # !/bin/sh
-echo hallo
+echo "hallo" | xclip -selection c
