@@ -6,4 +6,6 @@ rofi.modi: window,run,ssh,drun,file-browser,windowcd,combi,keys,calc,emoji
 
 rofi.show-icons: true
 # rofi.icon-theme: luv-icon-theme
+rofi.levenshtein-sort: false
+rofi.sort: true
 
