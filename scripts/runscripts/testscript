@@ -1,2 +1,13 @@
 # !/bin/sh
-echo "hallo" | xclip -selection c
+# echo "hallo" | xclip -selection c
+
+
+duration=0
+while [ true ] 
+do 
+echo $duration
+((duration++))
+> /home/jfs/myconfig/scripts/data/timerdata
+echo $duration >> /home/jfs/myconfig/scripts/data/timerdata
+sleep 1
+done    

@@ -128,50 +128,50 @@ export FZF_CTRL_T_COMMAND='rg --files --glob '!magic-the-gathering-arena''
 # --------------------------------------------------------------------------------
 
 # Terminal global path using fzf just like ALT_C 
-__fsel() {
-  local cmd="find . type -d find ~ -type d \( -path "*.git" -o -path "*magic-the-gathering-arena" -o -path "*.dropbox*" \) -prune -o -print | fzf"
+# __fsel() {
+#   local cmd="find . type -d find ~ -type d \( -path "*.git" -o -path "*magic-the-gathering-arena" -o -path "*.dropbox*" \) -prune -o -print | fzf"
     
-  setopt localoptions pipefail 2> /dev/null
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" $(__fzfcmd) -m "$@" | while read item; do
-    echo -n "${(q)item} "
-  done
-  local ret=$?
-  echo
-  return $ret
-}
+#   setopt localoptions pipefail 2> /dev/null
+#   eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" $(__fzfcmd) -m "$@" | while read item; do
+#     echo -n "${(q)item} "
+#   done
+#   local ret=$?
+#   echo
+#   return $ret
+# }
 
-__fzf_use_tmux__() {
-  [ -n "$TMUX_PANE" ] && [ "${FZF_TMUX:-0}" != 0 ] && [ ${LINES:-40} -gt 15 ]
-}
+# __fzf_use_tmux__() {
+#   [ -n "$TMUX_PANE" ] && [ "${FZF_TMUX:-0}" != 0 ] && [ ${LINES:-40} -gt 15 ]
+# }
 
-__fzfcmd() {
-  __fzf_use_tmux__ &&
-    echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
-}
+# __fzfcmd() {
+#   __fzf_use_tmux__ &&
+#     echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
+# }
 
-fzf-file-widget() {
-  LBUFFER="${LBUFFER}$(__fsel)"
-  local ret=$?
-  zle reset-prompt
-  return $ret
-}
-zle     -N   fzf-file-widget
-bindkey '^O' fzf-file-widget
+# fzf-file-widget() {
+#   LBUFFER="${LBUFFER}$(__fsel)"
+#   local ret=$?
+#   zle reset-prompt
+#   return $ret
+# }
+# zle     -N   fzf-file-widget
+# bindkey '^O' fzf-file-widget
 
-fzf-redraw-prompt() {
-  local precmd
-  for precmd in $precmd_functions; do
-    $precmd
-  done
-  zle reset-prompt
-}
-zle -N fzf-redraw-prompt
+# fzf-redraw-prompt() {
+#   local precmd
+#   for precmd in $precmd_functions; do
+#     $precmd
+#   done
+#   zle reset-prompt
+# }
+# zle -N fzf-redraw-prompt
 
 # --------------------------------------------------------------------------------  
 # Aliases
 # --------------------------------------------------------------------------------
 
-alias copy='| kitty +kitten clipboard'
+alias copy='kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
 alias pS='sudo pacman -S'
