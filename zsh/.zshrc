@@ -55,7 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Which plugins would you like to load?
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git zsh-syntax-highlighting vi-mode fzf)
+plugins=(autojump git zsh-syntax-highlighting vi-mode fzf zsh-system-clipboard)
 
 source $ZSH/oh-my-zsh.sh
 

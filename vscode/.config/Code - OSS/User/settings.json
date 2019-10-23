@@ -43,6 +43,21 @@
     "vim.sneakUseIgnorecaseAndSmartcase": true,
     "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
+
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["z", "a"],
+            "commands": [
+                "editor.toggleFold",
+            ]
+        },
+        {
+            "before": ["z", "f", "1"],
+            "commands": [
+                "editor.foldLevel1"
+            ]
+        }
+    ],
       
     // Language specific
     "go.lintOnSave": "off",
