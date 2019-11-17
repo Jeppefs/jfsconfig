@@ -33,12 +33,16 @@ set mouse=a
 
 "-------------------------------------------------------------------------------
 "Keyboard remappings
+let mapleader =" "
+
 nnoremap <C-p> :FZF <ENTER>
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 "-------------------------------------------------------------------------------
 "Plugins

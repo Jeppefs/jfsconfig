@@ -175,6 +175,8 @@ alias copy='kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
 alias pS='sudo pacman -S'
+alias vim='nvim'
+alias vimdiff='nvim -d'
 
 # --------------------------------------------------------------------------------  
 # Keybindings

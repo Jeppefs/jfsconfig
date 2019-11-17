@@ -15,14 +15,26 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8" 
 set $ws9 "9"
 set $ws10 "10"
-
-set $wsWelcome "Welcome"
+set $wsWelcome "Welcome" 
 
 # Script folder
 set $startup /$HOME/scripts/startup
+
+# workspace output
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-2
+workspace $ws8 output DP-2
+workspace $ws9 output DP-2
+workspace $ws10 output DP-2
+workspace $wsWelcome output DP-2
 
 # -------------------------------------------------------------------------------- 
 # Font 
@@ -123,9 +135,27 @@ bindsym $mod+z focus parent
 
 # -------------------------------------------------------------------------------- 
 # Workspaces 
-# -------------------------------------------------------------------------------- 
+# ------------------------------------------------------------OMMAND='rg --files --glob '!magic-th-------------------- 
 
 # switch to workspace
+#bindsym $mod+q mode "workspace"
+mode workspace {
+#        bindsym q workspace $wsWelcome
+#
+        bindsym 1 workspace $ws1
+        bindsym 2 workspace $ws2
+        bindsym 3 workspace $ws3
+        bindsym 4 workspace $ws4
+        bindsym 5 workspace $ws5
+        bindsym 6 workspace $ws6
+        bindsym 7 workspace $ws7
+        bindsym 8 workspace $ws8
+        bindsym 9 workspace $ws9
+        bindsym 0 workspace $ws10
+}
+
+bindsym $mod+space workspace back_and_forth
+
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -137,14 +167,12 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-bindsym $mod+space workspace back_and_forth
-
 bindsym $mod+q workspace $wsWelcome
 
-bindsym --whole-window --border $mod+Shift+button5 focus left 
-bindsym --whole-window --border $mod+Shift+button4 focus right
-bindsym --whole-window --border $mod+button5 workspace prev
-bindsym --whole-window --border $mod+button4 workspace next
+bindsym --whole-window --border $mod+Shift+button5 focus lOMMAND='rg --files --glob '!magic-tht 
+bindsym --whole-window --border $mod+Shift+button4 focus rOMMAND='rg --files --glob '!magic-thht
+bindsym --whole-window --border $mod+button5 workspace preOMMAND='rg --files --glob '!magic-th
+bindsym --whole-window --border $mod+button4 workspace nexOMMAND='rg --files --glob '!magic-th
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -213,11 +241,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
 # -------------------------------------------------------------------------------- 
 # Media
 # -------------------------------------------------------------------------------- 
 bindsym $mod+p exec "playerctl play-pause"
+bindsym $mod+Shift+b exec "flameshot full -c -p ~/core/images/screenshots"
 
 # -------------------------------------------------------------------------------- 
 # Bar
@@ -247,7 +275,7 @@ smart_borders on
 exec_always nm-applet
 exec_always compton -b --config ~/.config/compton/compton.conf
 exec_always dropbox -b 
-exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg 
+exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg 
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot
 

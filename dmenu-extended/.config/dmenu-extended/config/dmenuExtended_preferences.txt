@@ -73,7 +73,7 @@
     ],
     "ignore_folders": [
         "~/myconfig/.git",
-        "~/core/games/magic-the-gathering-arena"
+        "~/core/games"
     ],
     "global_ignore_folders": [
         ".git",
