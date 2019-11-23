@@ -15,6 +15,7 @@
     "workbench.colorTheme": "Horizon",
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
+    "workbench.fontAliasing": "auto",
     "keyboard.dispatch": "keyCode",
     "window.menuBarVisibility": "toggle",
 

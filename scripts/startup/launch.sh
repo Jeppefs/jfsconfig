@@ -10,11 +10,12 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Polybar, using default config location ~/.config/polybar/config
 polybar main &
+polybar secondary &
 
 echo "Polybar launched..."
 
 ## Launch Programs
-i3-msg 'workspace 1; exec kitty -o background_opacity=0.8' 
+i3-msg 'workspace 1; exec kitty -o background_opacity=0.9' 
 sleep 1
 i3-msg 'move scratchpad'
 sleep 1 
