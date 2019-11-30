@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/jfs/.cache'
 let g:netrw_dirhist_1='/home/jfs/myconfig/i3/.config/i3'
 let g:netrw_dirhist_0='/etc/X11/xorg.conf.d'
 let g:netrw_dirhist_9='/home/jfs/core/images/wallpapers'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_6='/home/jfs/myconfig/wallpapers'
 let g:netrw_dirhist_5='/home/jfs/Downloads'
 let g:netrw_dirhist_4='/home/jfs/core/films'
 let g:netrw_dirhist_3='/home/jfs/core/games/exgames/lost+found'
-let g:netrw_dirhist_2='/usr/share/texmf-dist/tex4ht/ht-fonts/gbk'

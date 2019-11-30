@@ -181,6 +181,7 @@ alias vimdiff='nvim -d'
 alias ll='exa -l'
 alias ls='exa -a'
 alias cc='cdAndls'
+alias pip='sudo pip'
 
 cdAndls() {
 	cd $1 &&
