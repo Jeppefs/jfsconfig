@@ -58,7 +58,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "SauceCodePro Nerd Font:size=8"
 
-modules-left = i3
+modules-left = i3 xwindow
 modules-center = spotify
 modules-right = xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
@@ -118,6 +118,8 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+label-maxlen=80
+format-underline = #4d1171
 
 [module/xkeyboard]
 type = internal/xkeyboard

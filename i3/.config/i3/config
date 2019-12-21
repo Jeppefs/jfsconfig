@@ -275,6 +275,7 @@ smart_borders on
 exec_always nm-applet
 exec_always compton -b --config ~/.config/compton/compton.conf
 exec_always dropbox -b 
+exec_always syncthing -b
 exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg 
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot

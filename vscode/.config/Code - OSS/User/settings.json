@@ -1,6 +1,6 @@
 {
     // Editor
-    "editor.fontSize": 13,
+    "editor.fontSize": 16,
     "editor.minimap.maxColumn": 100,
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 100,
@@ -65,6 +65,9 @@
 
     // File association
     "files.associations": {
-        "config": "properties"
-    }
+        "config": "properties",
+        "*.vim": "vimrc"
+    },
+    "window.zoomLevel": -1,
+    "debug.console.fontSize": 16
 }
