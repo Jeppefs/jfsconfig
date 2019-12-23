@@ -55,7 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Which plugins would you like to load?
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git zsh-syntax-highlighting vi-mode fzf)
+plugins=(autojump git zsh-syntax-highlighting vi-mode fzf zsh-system-clipboard)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,11 +117,12 @@ bindkey '^e' edit-command-line
 # --------------------------------------------------------------------------------
 
 # Changes to default fzf commands
-export FZF_DEFAULT_COMMAND='rg --files --glob '!magic-the-gathering-arena''
+export FZF_DEFAULT_COMMAND='rg --files --glob '!exgames''
 export FZF_DEFAULT_OPTS='--height=70% --layout=reverse --preview="nvim {}" --preview-window=right:50%:wrap --bind=tab:down,btab:up,ctrl-space:toggle+down'
-export FZF_CTRL_T_COMMAND='rg --files --glob '!magic-the-gathering-arena''
+export FZF_CTRL_T_COMMAND='rg --files --glob '!exgames''
 # export FZF_CTRL_R_COMMAND='print -rl -- ${(u)${(f)"$( rg --hidden --files $1 2> /dev/null )"}:h}'
-# export FZF_ALT_C_COMMAND='fi'
+# export FZF_ALT_C_COMMANDK
+D='fi'
 
 # --------------------------------------------------------------------------------  
 # Custom functions
@@ -175,6 +176,17 @@ alias copy='kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
 alias pS='sudo pacman -S'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+alias ll='exa -l'
+alias ls='exa -a'
+alias cc='cdAndls'
+alias pip='sudo pip'
+
+cdAndls() {
+	cd $1 &&
+	ls;
+}
 
 # --------------------------------------------------------------------------------  
 # Keybindings

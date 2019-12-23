@@ -88,7 +88,9 @@ The shell of use is zsh. Here is how to install it. The config file is as always
 
 
 ### In terminal editor
-Vim is used. gvim is installed, as it has the more sensible initial configuration
+NeoVim is used. gvim is installed, as it has the more sensible initial configuration
+`pS vim`
+`pS neovim`
 `sudo pacman -S gvim`
 
 ### Sound

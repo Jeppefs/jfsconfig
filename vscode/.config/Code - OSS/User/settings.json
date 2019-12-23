@@ -1,6 +1,5 @@
 {
     // Editor
-    "editor.fontSize": 13,
     "editor.minimap.maxColumn": 100,
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 100,
@@ -10,14 +9,16 @@
     
     "files.autoSave": "onFocusChange",
 
-    // Woerkbench
+    // Workbench
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Horizon",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
+    "workbench.fontAliasing": "auto",
     "keyboard.dispatch": "keyCode",
     "window.menuBarVisibility": "toggle",
 
+    // -------------------------------------------------------------------------------- 
     // Markdown
     "html.format.wrapLineLength": 100,
     "[markdown]": {
@@ -34,21 +35,21 @@
     "markdown-preview-enhanced.previewTheme": "monokai.css",
     "latex-workshop.view.pdf.viewer": "external",
 
+    // -------------------------------------------------------------------------------- 
     // Vim 
-    "vim.useSystemClipboard": true,
-    "vim.foldfix": true,
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/bin/nvim",
-    "vim.sneak": true,
-    "vim.sneakUseIgnorecaseAndSmartcase": true,
-    "vim.replaceWithRegister": true,
-    "vim.camelCaseMotion.enable": true,
-      
+
     // Language specific
     "go.lintOnSave": "off",
 
     // File association
     "files.associations": {
-        "config": "properties"
-    }
+        "config": "properties",
+        "*.vim": "vimrc",
+        "*.vimrc": "vimrc"
+    },
+    "window.zoomLevel": 0,
+    "debug.console.fontSize": 16,
+    "vscode-neovim.neovimPath": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init.vim",
+    "editor.scrollBeyondLastLine": false
 }
