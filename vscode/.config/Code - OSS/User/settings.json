@@ -11,7 +11,6 @@
 
     // Workbench
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
     "workbench.fontAliasing": "auto",
@@ -37,6 +36,35 @@
 
     // -------------------------------------------------------------------------------- 
     // Vim 
+    "vim.useSystemClipboard": true,
+    "vim.sneak": true,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.camelCaseMotion.enable": true,
+    "vim.foldfix": true,
+    "vim.surround": true,
+    "vim.easymotion": true,
+
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["z", "a"],
+            "commands": [
+                "editor.toggleFold",
+            ]
+        },
+        {
+            "before": ["z", "f", "1"],
+            "commands": [
+                "editor.foldLevel1"
+            ]
+        },
+        {
+            "before": ["<C-j>"],
+            "commands": [
+                "workbench.action.focusNextGroup"
+            ]
+        }
+    ],
 
     // Language specific
     "go.lintOnSave": "off",
@@ -50,6 +78,7 @@
     "window.zoomLevel": 0,
     "debug.console.fontSize": 16,
     "vscode-neovim.neovimPath": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init.vim",
-    "editor.scrollBeyondLastLine": false
+    "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init2.vim",
+    // "editor.scrollBeyondLastLine": false,
+    "workbench.colorTheme": "Gruvbox Material Dark"
 }

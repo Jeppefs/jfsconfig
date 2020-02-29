@@ -83,76 +83,42 @@ bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-m
 # -------------------------------------------------------------------------------- 
 
 # change focus
-# bindsym $mod+Tab exec --no-startup-id focus-next-visible.py
 bindsym $mod+j focus left
-bindsym $mod+k focus down
+bindsym $mod+k focus right
+bindsym $mod+h focus down
 bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
+bindsym $mod+Right focus right
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
-# move focused window
 bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
+bindsym $mod+Shift+k move right
+bindsym $mod+Shift+h move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
+# Splits, fullscreen and tabbed 
 bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
+bindsym $mod+Shift+v split h
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+shift+w layout toggle split
 
 # toggle tiling / floating
-bindsym "$mod+Shift+," floating toggle
+bindsym "$mod+Shift+comma" floating toggle
 
 # change focus between tiling / floating windows
-bindsym "$mod+," focus mode_toggle
-
-# focus the parent container
-bindsym $mod+z focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+bindsym "$mod+comma" focus mode_toggle
 
 # -------------------------------------------------------------------------------- 
 # Workspaces 
-# ------------------------------------------------------------OMMAND='rg --files --glob '!magic-th-------------------- 
-
-# switch to workspace
-#bindsym $mod+q mode "workspace"
-mode workspace {
-#        bindsym q workspace $wsWelcome
-#
-        bindsym 1 workspace $ws1
-        bindsym 2 workspace $ws2
-        bindsym 3 workspace $ws3
-        bindsym 4 workspace $ws4
-        bindsym 5 workspace $ws5
-        bindsym 6 workspace $ws6
-        bindsym 7 workspace $ws7
-        bindsym 8 workspace $ws8
-        bindsym 9 workspace $ws9
-        bindsym 0 workspace $ws10
-}
+# --------------------------------------------------------------------------------
 
 bindsym $mod+space workspace back_and_forth
 
@@ -169,10 +135,11 @@ bindsym $mod+0 workspace $ws10
 
 bindsym $mod+q workspace $wsWelcome
 
-bindsym --whole-window --border $mod+Shift+button5 focus lOMMAND='rg --files --glob '!magic-tht 
-bindsym --whole-window --border $mod+Shift+button4 focus rOMMAND='rg --files --glob '!magic-thht
-bindsym --whole-window --border $mod+button5 workspace preOMMAND='rg --files --glob '!magic-th
-bindsym --whole-window --border $mod+button4 workspace nexOMMAND='rg --files --glob '!magic-th
+# mouse bindings
+bindsym --whole-window --border $mod+Shift+button5 focus
+bindsym --whole-window --border $mod+Shift+button4 focus
+bindsym --whole-window --border $mod+button5 workspace
+bindsym --whole-window --border $mod+button4 workspace
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -190,14 +157,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Misc 
 # -------------------------------------------------------------------------------- 
 
-# reload the configuration file
-#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # See all keybindings
-# bindsym $mod+shift+m exec "i3keys web 8000"
+bindsym $mod+shift+m exec "i3keys web 8000"
 
 
 # -------------------------------------------------------------------------------- 

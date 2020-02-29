@@ -175,17 +175,17 @@ D='fi'
 alias copy='kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
-alias pS='sudo pacman -S'
+alias PS='sudo pacman -S'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ll='exa -l'
 alias ls='exa -a'
-alias cc='cdAndls'
+alias cc='cdAndll'
 alias pip='sudo pip'
 
-cdAndls() {
+cdAndll() {
 	cd $1 &&
-	ls;
+	ll;
 }
 
 # --------------------------------------------------------------------------------  
