@@ -24,17 +24,17 @@ set $wsWelcome "Welcome"
 set $startup /$HOME/scripts/startup
 
 # workspace output
-workspace $ws1 output DP-1
-workspace $ws2 output DP-1
-workspace $ws3 output DP-1
-workspace $ws4 output DP-1
-workspace $ws5 output DP-1
-workspace $ws6 output DP-1
-workspace $ws7 output DP-2
-workspace $ws8 output DP-2
-workspace $ws9 output DP-2
-workspace $ws10 output DP-2
-workspace $wsWelcome output DP-2
+workspace $ws1 output DisplayPort-0
+workspace $ws2 output DisplayPort-0
+workspace $ws3 output DisplayPort-0
+workspace $ws4 output DisplayPort-0
+workspace $ws5 output DisplayPort-0
+workspace $ws6 output DisplayPort-0
+workspace $ws7 output DisplayPort-1
+workspace $ws8 output DisplayPort-1
+workspace $ws9 output DisplayPort-1
+workspace $ws10 output DisplayPort-1
+workspace $wsWelcome output DisplayPort-1
 
 # -------------------------------------------------------------------------------- 
 # Font 
@@ -70,12 +70,12 @@ bindsym $mod+Return exec kitty
 # 1. Application 
 # 2. Files
 # 3. Running
-bindsym $mod+d exec rofi -show drun -show-icons -icon-theme luv-icon-theme
+bindsym $mod+d exec rofi -i -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run
-bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -dmenu)"
+bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -i -dmenu)"
 bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
 #bindcode --release 133 exec rofi -show window -kb-cancel Super_L
-bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $mod+c exec rofi -i -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # -------------------------------------------------------------------------------- 
@@ -210,6 +210,7 @@ bindsym $mod+r mode "resize"
 # Media
 # -------------------------------------------------------------------------------- 
 bindsym $mod+p exec "playerctl play-pause"
+bindsym $mod+b exec "flameshot gui"
 bindsym $mod+Shift+b exec "flameshot full -c -p ~/core/images/screenshots"
 
 # -------------------------------------------------------------------------------- 
@@ -237,11 +238,12 @@ smart_borders on
 # Startup application daemons executions
 # -------------------------------------------------------------------------------- 
 
+exec "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 1200x240 --primary"
+exec "xrandr --output DisplayPort-1 --mode 1920x1200 --rate 60 --rotate left --left-of DisplayPort-0"
 exec_always nm-applet
-exec_always compton -b --config ~/.config/compton/compton.conf
+exec_always picom -b --config ~/.config/picom/picom.conf
 exec_always dropbox -b 
 exec_always syncthing -b
-exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg 
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot
 
@@ -250,4 +252,5 @@ exec_always flameshot
 # -------------------------------------------------------------------------------- 
 
 exec "bash $HOME/myconfig/scripts/startup/launch.sh"
+exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg 
 #exec --no-startup-id "i3-msg 'workspace $WS1'" 

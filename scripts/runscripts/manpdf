@@ -1,4 +1,4 @@
 # !/bin/sh
-man -k . | awk '{print $1}' | rofi -dmenu | xargs -r  man -Tpdf | zathura - &
+man -k . | awk '{print $1}' | rofi -i -dmenu | xargs -r  man -Tpdf | zathura - &
 sleep 0.5
 i3-msg move container to workspace "8" 

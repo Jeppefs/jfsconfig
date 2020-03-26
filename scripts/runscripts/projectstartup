@@ -1,0 +1,12 @@
+# !/bin/sh
+
+start_terminal()
+{
+    i3-msg exec kitty
+}
+
+###
+# Main
+### 
+myvar = $(echo $'hey1\nhey2' | rofi -dmenu | echo $'hello')
+echo "$myvar"

@@ -29,9 +29,8 @@ hi MatchParen cterm=bold ctermbg=green ctermfg=red
 
 set wrap
 set linebreak
-set columns=100
+"set columns=100
 
-autocmd VimResized * wincmd =
 autocmd VimResized * wincmd =
 
 let g:vim_markdown_folding_style_pythonic = 1
@@ -85,12 +84,13 @@ Plug 'godlygeek/tabular'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax' 
 Plug 'lervag/vimtex'
+Plug 'DougBeney/pickachu'
 call plug#end()
 
 "-------------------------------------------------------------------------------
 "Colorshceeme settings
-let g:onedark_terminal_italics = 1
-colorscheme onedark
+"let g:onedark_terminal_italics = 1
+"colorscheme onedark
 
 
 
