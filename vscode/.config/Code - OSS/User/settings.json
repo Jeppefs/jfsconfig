@@ -13,7 +13,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
-    "workbench.fontAliasing": "auto",
     "keyboard.dispatch": "keyCode",
     "window.menuBarVisibility": "toggle",
 
@@ -92,8 +91,7 @@
     },
     "window.zoomLevel": 0,
     "debug.console.fontSize": 16,
-    "vscode-neovim.neovimPath": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init2.vim",
-    // "editor.scrollBeyondLastLine": false,
-    "workbench.colorTheme": "Gruvbox Material Dark"
+    // "vscode-neovim.neovimPath": "/usr/bin/nvim",
+    // "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init2.vim",
+    "workbench.colorTheme": "Gruvbox Material Dark",
 }

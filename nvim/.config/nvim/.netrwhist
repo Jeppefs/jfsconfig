@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/jfs/myconfig'
+let g:netrw_dirhist_9='/home/jfs/core/lists'
 let g:netrw_dirhist_8='/home/jfs/.config/spotify'
 let g:netrw_dirhist_7='/home/jfs/Downloads/dmenu-extended'
 let g:netrw_dirhist_6='/home/jfs/Downloads/dmenu-extended/docs'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_4='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/
 let g:netrw_dirhist_3='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/CustomMapMarkers'
 let g:netrw_dirhist_2='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/Respec'
 let g:netrw_dirhist_1='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/RestLess'
-let g:netrw_dirhist_0='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/FasterMenuBookZoom'
-let g:netrw_dirhist_9='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/KingdomResolution'

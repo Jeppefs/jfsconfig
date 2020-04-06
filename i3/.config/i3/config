@@ -1,10 +1,10 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# -------------------------------------------------------------------------------- 
-# Variables 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+# Variables
+# --------------------------------------------------------------------------------
 
-# Set the modifier key to the windows key 
+# Set the modifier key to the windows key
 set $mod Mod4
 
 # Workspspaces
@@ -15,10 +15,37 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8" 
+set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $wsWelcome "Welcome" 
+set $wsA "A"
+set $wsB "B"
+set $wsC "C"
+set $wsD "D"
+set $wsE "E"
+set $wsF "F"
+set $wsG "G"
+set $wsH "H"
+set $wsI "I"
+set $wsJ "J"
+set $wsK "K"
+set $wsL "L"
+set $wsM "M"
+set $wsN "N"
+set $wsO "O"
+set $wsP "P"
+set $wsQ "Q"
+set $wsR "R"
+set $wsS "S"
+set $wsT "T"
+set $wsU "U"
+set $wsV "V"
+set $wsW "W"
+set $wsX "X"
+set $wsY "Y"
+set $wsZ "Z"
+
+set $wsWelcome "Welcome"
 
 # Script folder
 set $startup /$HOME/scripts/startup
@@ -36,18 +63,45 @@ workspace $ws9 output DisplayPort-1
 workspace $ws10 output DisplayPort-1
 workspace $wsWelcome output DisplayPort-1
 
-# -------------------------------------------------------------------------------- 
-# Font 
-# -------------------------------------------------------------------------------- 
+workspace $wsA output DisplayPort-0
+workspace $wsB output DisplayPort-0
+workspace $wsC output DisplayPort-0
+workspace $wsD output DisplayPort-0
+workspace $wsE output DisplayPort-0
+workspace $wsF output DisplayPort-0
+workspace $wsG output DisplayPort-0
+workspace $wsH output DisplayPort-0
+workspace $wsI output DisplayPort-0
+workspace $wsJ output DisplayPort-0
+workspace $wsK output DisplayPort-0
+workspace $wsL output DisplayPort-0
+workspace $wsM output DisplayPort-0
+workspace $wsN output DisplayPort-0
+workspace $wsO output DisplayPort-0
+workspace $wsP output DisplayPort-0
+workspace $wsQ output DisplayPort-1
+workspace $wsR output DisplayPort-0
+workspace $wsS output DisplayPort-0
+workspace $wsT output DisplayPort-0
+workspace $wsU output DisplayPort-0
+workspace $wsV output DisplayPort-0
+workspace $wsW output DisplayPort-0
+workspace $wsX output DisplayPort-0
+workspace $wsY output DisplayPort-0
+workspace $wsZ output DisplayPort-0
 
-#font pango: Source Code Pro 10 
+# --------------------------------------------------------------------------------
+# Font
+# --------------------------------------------------------------------------------
+
+#font pango: Source Code Pro 10
 font pango:SauceCodePro Nerd Font 8
 #font pango:monospace 10
 #font pango:Ubuntu Nerd Font 8
 
-# -------------------------------------------------------------------------------- 
-# Windows 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+# Windows
+# --------------------------------------------------------------------------------
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -57,19 +111,16 @@ bindsym $mod+Shift+q kill
 
 # scratchpad
 bindsym $mod+y scratchpad show
-bindsym $mod+Shift+y move scratchpad 
+bindsym $mod+Shift+y move scratchpad
 
-# -------------------------------------------------------------------------------- 
-# Application hotkey spawns 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+# Application hotkey spawns
+# --------------------------------------------------------------------------------
 
 # start a terminal
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec kitty
 
 # start rofi and dmenu extended
-# 1. Application 
-# 2. Files
-# 3. Running
 bindsym $mod+d exec rofi -i -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run
 bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -i -dmenu)"
@@ -78,9 +129,9 @@ bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
 bindsym $mod+c exec rofi -i -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
 
-# -------------------------------------------------------------------------------- 
-# Focus 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+# Focus
+# --------------------------------------------------------------------------------
 
 # change focus
 bindsym $mod+j focus left
@@ -103,7 +154,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 
-# Splits, fullscreen and tabbed 
+# Splits, fullscreen and tabbed
 bindsym $mod+v split v
 bindsym $mod+Shift+v split h
 bindsym $mod+f fullscreen toggle
@@ -116,8 +167,15 @@ bindsym "$mod+Shift+comma" floating toggle
 # change focus between tiling / floating windows
 bindsym "$mod+comma" focus mode_toggle
 
-# -------------------------------------------------------------------------------- 
-# Workspaces 
+# read 1 character and mark the current window with this character
+bindsym $mod+shift+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# read 1 character and go to the window with the character
+bindsym $mod+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+
+# --------------------------------------------------------------------------------
+# Workspaces
 # --------------------------------------------------------------------------------
 
 bindsym $mod+space workspace back_and_forth
@@ -133,13 +191,11 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-bindsym $mod+q workspace $wsWelcome
-
 # mouse bindings
 bindsym --whole-window --border $mod+Shift+button5 focus
 bindsym --whole-window --border $mod+Shift+button4 focus
-bindsym --whole-window --border $mod+button5 workspace
-bindsym --whole-window --border $mod+button4 workspace
+bindsym --whole-window $mod+button4 workspace next_on_output
+bindsym --whole-window $mod+button5 workspace prev_on_output
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -153,104 +209,184 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# -------------------------------------------------------------------------------- 
-# Misc 
-# -------------------------------------------------------------------------------- 
+bindsym $mod+g exec kitty; exec kitty
+
+# mode with all workspaces
+mode "workspaces" {
+	bindsym 1 workspace $ws1; mode "default"
+	bindsym 2 workspace $ws2; mode "default"
+	bindsym 3 workspace $ws3; mode "default"
+	bindsym 4 workspace $ws4; mode "default"
+	bindsym 5 workspace $ws5; mode "default"
+	bindsym 6 workspace $ws6; mode "default"
+	bindsym 7 workspace $ws7; mode "default"
+	bindsym 8 workspace $ws8; mode "default"
+	bindsym 9 workspace $ws9; mode "default"
+	bindsym 0 workspace $ws10; mode "default"
+
+	bindsym a workspace $wsA; mode "default"
+	bindsym b workspace $wsB; mode "default"
+	bindsym c workspace $wsC; mode "default"
+	bindsym d workspace $wsD; mode "default"
+	bindsym e workspace $wsE; mode "default"
+	bindsym f workspace $wsF; mode "default"
+	bindsym g workspace $wsG; mode "default"
+	bindsym h workspace $wsH; mode "default"
+	bindsym i workspace $wsI; mode "default"
+	bindsym j workspace $wsJ; mode "default"
+	bindsym k workspace $wsK; mode "default"
+	bindsym l workspace $wsL; mode "default"
+	bindsym m workspace $wsM; mode "default"
+	bindsym n workspace $wsN; mode "default"
+	bindsym o workspace $wsO; mode "default"
+	bindsym p workspace $wsP; mode "default"
+	bindsym q workspace $wsQ; mode "default"
+	bindsym r workspace $wsR; mode "default"
+	bindsym s workspace $wsS; mode "default"
+	bindsym t workspace $wsT; mode "default"
+	bindsym u workspace $wsU; mode "default"
+	bindsym v workspace $wsV; mode "default"
+	bindsym w workspace $wsW; mode "default"
+	bindsym x workspace $wsX; mode "default"
+	bindsym y workspace $wsY; mode "default"
+	bindsym z workspace $wsZ; mode "default"
+
+	bindsym Shift+1 move container to workspace $ws1
+	bindsym Shift+2 move container to workspace $ws2
+	bindsym Shift+3 move container to workspace $ws3
+	bindsym Shift+4 move container to workspace $ws4
+	bindsym Shift+5 move container to workspace $ws5
+	bindsym Shift+6 move container to workspace $ws6
+	bindsym Shift+7 move container to workspace $ws7
+	bindsym Shift+8 move container to workspace $ws8
+	bindsym Shift+9 move container to workspace $ws9
+	bindsym Shift+0 move container to workspace $ws10
+
+	bindsym Shift+a move container to workspace $wsA
+	bindsym Shift+b move container to workspace $wsB
+	bindsym Shift+c move container to workspace $wsC
+	bindsym Shift+d move container to workspace $wsD
+	bindsym Shift+e move container to workspace $wsE
+	bindsym Shift+f move container to workspace $wsF
+	bindsym Shift+g move container to workspace $wsG
+	bindsym Shift+h move container to workspace $wsH
+	bindsym Shift+i move container to workspace $wsI
+	bindsym Shift+j move container to workspace $wsJ
+	bindsym Shift+k move container to workspace $wsK
+	bindsym Shift+l move container to workspace $wsL
+	bindsym Shift+m move container to workspace $wsM
+	bindsym Shift+n move container to workspace $wsN
+	bindsym Shift+o move container to workspace $wsO
+	bindsym Shift+p move container to workspace $wsP
+	bindsym Shift+q move container to workspace $wsQ
+	bindsym Shift+r move container to workspace $wsR
+	bindsym Shift+s move container to workspace $wsS
+	bindsym Shift+t move container to workspace $wsT
+	bindsym Shift+u move container to workspace $wsU
+	bindsym Shift+v move container to workspace $wsV
+	bindsym Shift+w move container to workspace $wsW
+	bindsym Shift+x move container to workspace $wsX
+	bindsym Shift+y move container to workspace $wsY
+	bindsym Shift+z move container to workspace $wsZ
+
+	# back to normal: Enter or Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+a mode "workspaces"
+
+# --------------------------------------------------------------------------------
+# Misc
+# --------------------------------------------------------------------------------
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 # See all keybindings
-bindsym $mod+shift+m exec "i3keys web 8000"
+# bindsym $mod+shift+m exec "i3keys web 8000"
 
 
-# -------------------------------------------------------------------------------- 
-# Resize 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+# Resize
+# --------------------------------------------------------------------------------
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # resize
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # bindings for gap resize
+    bindsym g gaps inner current plus 5https://faq.i3wm.org/question/882/jumping-to-workspace-left-right.1.html
+    bindsym Shift+g gaps inner current minus 5
+    bindsym Shift+h gaps horizontal current minus 5
+    bindsym Shift+j gaps horizontal current plus 5
+    bindsym Shift+k gaps vertical current plus 5
+    bindsym Shift+l Gaps vertical current minus 5
 
-        # bindings for gap resize
-        bindsym g gaps inner current set 0      
-        bindsym Shift+g gaps inner current plus 5 
-        bindsym --whole-window --border button4 inner current minus 5
-        bindsym --whole-window --border button5 inner current plus 5 
-        #bindsym Shift+j resize shrink width 10 px or 10 ppt
-        #bindsym Shift+k resize grow height 10 px or 10 ppt
-        #bindsym Shift+l resize shrink height 10 px or 10 ppt
-        #bindsym Shift+semicolon resize grow width 10 px or 10 ppt
- 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+# Gaps and borders
+# --------------------------------------------------------------------------------
+
+# set size of border of focussed window
+for_window [class=".*"] border pixel 2
+
+# set default gaps
+gaps inner 10
+#gaps outer 10
+
+# smart borders which
+smart_borders no_gaps
+
+# --------------------------------------------------------------------------------
 # Media
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
+
+# stop/play music
 bindsym $mod+p exec "playerctl play-pause"
+
+# take a screenshot by starting flameshot or by taking a screenshot and save it
 bindsym $mod+b exec "flameshot gui"
 bindsym $mod+Shift+b exec "flameshot full -c -p ~/core/images/screenshots"
 
-# -------------------------------------------------------------------------------- 
-# Bar
-# -------------------------------------------------------------------------------- 
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status
-# }
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# -------------------------------------------------------------------------------- 
-# Gaps 
-# -------------------------------------------------------------------------------- 
-
-for_window [class=".*"] border pixel 2
-gaps inner 0
-gaps outer 0
-
-smart_borders on
-
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
 # Startup application daemons executions
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
 
+exec xrandr --output DisplayPort-0 --set TearFree on
+exec xrandr --output DisplayPort-1 --set TearFree on
 exec "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 1200x240 --primary"
 exec "xrandr --output DisplayPort-1 --mode 1920x1200 --rate 60 --rotate left --left-of DisplayPort-0"
+
 exec_always nm-applet
 exec_always picom -b --config ~/.config/picom/picom.conf
-exec_always dropbox -b 
+exec_always dropbox -b
 exec_always syncthing -b
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot
+exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg
 
-# -------------------------------------------------------------------------------- 
+# --------------------------------------------------------------------------------
 # Startup scripts
-# -------------------------------------------------------------------------------- 
-
+# --------------------------------------------------------------------------------
 exec "bash $HOME/myconfig/scripts/startup/launch.sh"
-exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg 
-#exec --no-startup-id "i3-msg 'workspace $WS1'" 
