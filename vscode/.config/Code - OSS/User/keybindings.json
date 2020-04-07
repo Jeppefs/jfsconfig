@@ -19,5 +19,11 @@
     "key": "shift+tab",
     "command": "selectPrevSuggestion",
     "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+  },
+  {
+    "command": "editor.toggleFold",
+    "key": "z-a",
+    "when": "neovim.mode == normal",
+    "args": "a"
   }
 ]

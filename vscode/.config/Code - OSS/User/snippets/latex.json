@@ -1,0 +1,39 @@
+{
+	"GC": {
+	"prefix": "GC",
+	"body": [
+		"\\begin{GC}[{$1:GCname}]",
+		"\\label{GC:$1}",
+		"\\begin{description}",
+		"\t\\item{Society:} $2",
+		"\t\\item{Visuals:} $3",
+		"\t\\item{Quirks:} $4",
+		"\t\\item{Morals:} $5",
+		"\t\\item{Goals:} $6",
+		"\t\\item{Relations:} $7",
+		"\t\\item{Background:} $8",
+		"\\end{description}",
+		"\\end{GC}"
+	],
+	"description":"GC template"
+	},
+
+	"Obstacle": {
+	"prefix": "Obstacle",
+	"body": [
+		"\\begin{obstacle}[${1:obstacleName}]",
+		"\\label{obs:$1}",
+		"\\begin{decsiption}",
+		"\t\\item{Challenge:} $2",
+		"\t\\item{Place:} $3",
+		"\t\\item{Description:} $4",
+		"\t\\item{Solution:} $5",
+		"\t\\item{Failure:} $6",
+		"\t\\item{Success:} $7",
+		"\t\\item{Treasure:} $8",
+		"\\end{description}",
+		"\\end{obstacle}"
+	],
+	"description":"Obstacle template"
+	},
+}

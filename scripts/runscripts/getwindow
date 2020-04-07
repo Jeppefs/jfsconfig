@@ -1,0 +1,3 @@
+# !/bin/sh
+
+i3-msg "[id=$(wmctrl -l | awk '{$3=""; print $0}' | rofi -i -dmenu -p "window" | awk '{print $1}')] move container to workspace current"
