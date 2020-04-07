@@ -169,11 +169,6 @@ bindsym $mod+0 workspace $ws10
 
 bindsym $mod+q workspace $wsWelcome
 
-bindsym --whole-window --border $mod+Shift+button5 focus lOMMAND='rg --files --glob '!magic-tht 
-bindsym --whole-window --border $mod+Shift+button4 focus rOMMAND='rg --files --glob '!magic-thht
-bindsym --whole-window --border $mod+button5 workspace preOMMAND='rg --files --glob '!magic-th
-bindsym --whole-window --border $mod+button4 workspace nexOMMAND='rg --files --glob '!magic-th
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2

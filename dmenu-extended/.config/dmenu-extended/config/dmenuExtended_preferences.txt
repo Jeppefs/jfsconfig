@@ -3,7 +3,7 @@
     "alias_display_format": "{name}",
     "exclude_items": [],
     "filebrowser": "kitty -d",
-    "fileopener": "kitty rifle",
+    "fileopener": "xdg-open",
     "filter_binaries": false,
     "follow_symlinks": false,
     "frequently_used": 5,

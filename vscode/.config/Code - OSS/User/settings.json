@@ -11,7 +11,6 @@
 
     // Workbench
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
     "workbench.fontAliasing": "auto",
@@ -51,5 +50,7 @@
     "debug.console.fontSize": 16,
     "vscode-neovim.neovimPath": "/usr/bin/nvim",
     "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init.vim",
-    "editor.scrollBeyondLastLine": false
+    "editor.scrollBeyondLastLine": false,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Horizon"
 }
