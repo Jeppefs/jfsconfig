@@ -1,0 +1,16 @@
+#!/bin/sh
+
+RoleplayingGM() # function 
+{
+    i3-msg exec "code ~/core/projects/roleplaying/gm"
+    sleep 0.5
+    i3-msg move container to workspace 2
+}
+
+###
+# Main
+### 
+
+# In order: 1. Get all lines with func on line. 2. Remove everything but the func name. 3. Remove the last line. 4. pipe into dmenu. 
+result=$(rg "function" $0 | awk '{sub(/\(\)/,"",$0); print $1}' | sed '$d' | rofi -dmenu -i)
+$result

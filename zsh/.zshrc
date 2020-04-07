@@ -118,7 +118,7 @@ bindkey '^e' edit-command-line
 
 # Changes to default fzf commands
 export FZF_DEFAULT_COMMAND='rg --files --glob '!exgames''
-export FZF_DEFAULT_OPTS='--height=70% --layout=reverse --preview="nvim {}" --preview-window=right:50%:wrap --bind=tab:down,btab:up,ctrl-space:toggle+down'
+export FZF_DEFAULT_OPTS='--height=70% --layout=reverse --preview="bat --style=numbers --color=always {} | head -500" --preview-window=right:50%:wrap --bind=tab:down,btab:up,ctrl-space:toggle+down'
 export FZF_CTRL_T_COMMAND='rg --files --glob '!exgames''
 # export FZF_CTRL_R_COMMAND='print -rl -- ${(u)${(f)"$( rg --hidden --files $1 2> /dev/null )"}:h}'
 # export FZF_ALT_C_COMMANDK
@@ -175,17 +175,17 @@ D='fi'
 alias copy='kitty +kitten clipboard'
 alias gitall='git add * && git commit -m'
 alias fr='rifle "$(fzf)"'
-alias pS='sudo pacman -S'
+alias PS='sudo pacman -S'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ll='exa -l'
 alias ls='exa -a'
-alias cc='cdAndls'
+alias cc='cdAndll'
 alias pip='sudo pip'
 
-cdAndls() {
+cdAndll() {aerc
 	cd $1 &&
-	ls;
+	ll;
 }
 
 # --------------------------------------------------------------------------------  

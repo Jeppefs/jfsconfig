@@ -11,10 +11,8 @@
 
     // Workbench
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.activityBar.visible": false,
     "workbench.sideBar.location": "right",
-    "workbench.fontAliasing": "auto",
     "keyboard.dispatch": "keyCode",
     "window.menuBarVisibility": "toggle",
 
@@ -33,10 +31,54 @@
     "markdown-preview-enhanced.HTML5EmbedUseLinkSyntax": true,
     
     "markdown-preview-enhanced.previewTheme": "monokai.css",
+
+
+    // -------------------------------------------------------------------------------- 
+    // Latex
     "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "zathura",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "--synctex-editor-command",
+        "code --reuse-window -g \"%{input}:%{line}\"",
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "zathura",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "--synctex-forward=%LINE%:0:%TEX%",
+        "%PDF%"
+    ],
 
     // -------------------------------------------------------------------------------- 
     // Vim 
+    "vim.useSystemClipboard": true,
+    "vim.sneak": true,
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.camelCaseMotion.enable": true,
+    "vim.foldfix": true,
+    "vim.surround": true,
+    "vim.easymotion": true,
+
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["z", "a"],
+            "commands": [
+                "editor.toggleFold",
+            ]
+        },
+        {
+            "before": ["z", "f", "1"],
+            "commands": [
+                "editor.foldLevel1"
+            ]
+        },
+        {
+            "before": ["<C-j>"],
+            "commands": [
+                "workbench.action.focusNextGroup"
+            ]
+        }
+    ],
 
     // Language specific
     "go.lintOnSave": "off",
@@ -49,7 +91,7 @@
     },
     "window.zoomLevel": 0,
     "debug.console.fontSize": 16,
-    "vscode-neovim.neovimPath": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init.vim",
-    "editor.scrollBeyondLastLine": false
+    // "vscode-neovim.neovimPath": "/usr/bin/nvim",
+    // "vscode-neovim.neovimInitPath": "/home/jfs/myconfig/nvim/.config/nvim/init2.vim",
+    "workbench.colorTheme": "Gruvbox Material Dark",
 }
