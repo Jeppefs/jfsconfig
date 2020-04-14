@@ -61,6 +61,7 @@ set virtualedit=block
 set autoindent
 set showcmd
 set foldmethod=marker
+set wildignore+=*.aux,*.out,*.toc
 
 "-------------------------------------------------------------------------------
 "Visuals {{{1
