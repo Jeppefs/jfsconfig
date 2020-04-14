@@ -1,15 +1,20 @@
 """jfs nvim config
 
 "-------------------------------------------------------------------------------
-"Plugins
+"Plugins {{{1
+"-------------------------------------------------------------------------------
 call plug#begin()
 
-"Theme
+"Themes
 Plug 'gruvbox-community/gruvbox'
 
-"Filemovement
+"Visuals
+
+
+"File navigation
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'francoiscabrol/ranger.vim'
 
 "QOL
 Plug 'machakann/vim-sandwich'
@@ -17,23 +22,25 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'godlygeek/tabular'
 Plug 'DougBeney/pickachu'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired' " Adds additional shortcuts
+Plug ' easymotion/vim-easymotion'
 
 "Language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Filetypes
-Plug 'lervag/vimtex'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'plasticboy/vim-markdown'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'lervag/vimtex'                                   " LaTeX
+Plug 'vim-pandoc/vim-pandoc'                           " Pandoc syntax
+Plug 'vim-pandoc/vim-pandoc-syntax'                    " Markdown syntax
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Python syntax
+Plug 'tmhedberg/SimpylFold'                            " Python folding
 
 "Ending plugins
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-evicons'
 
 call plug#end()
-
 "-------------------------------------------------------------------------------
-"Theme
+"Theme {{{1
 "-------------------------------------------------------------------------------
 syntax on "has to be at the top
 colorscheme gruvbox
@@ -42,7 +49,7 @@ let g:gruvbox_contrast_dark = '(hard)'
 highlight Normal guibg=none guifg=none
 
 "-------------------------------------------------------------------------------
-"System configuration
+"System configuration {{{1
 "-------------------------------------------------------------------------------
 set notimeout
 set clipboard=unnamedplus
@@ -50,9 +57,13 @@ set incsearch
 set ignorecase
 set smartcase
 set encoding=utf-8
+set virtualedit=block
+set autoindent
+set showcmd
+set foldmethod=marker
 
 "-------------------------------------------------------------------------------
-"Visuals
+"Visuals {{{1
 "-------------------------------------------------------------------------------
 set number relativenumber
 set nu rnu
@@ -68,10 +79,10 @@ set list
 autocmd VimResized * wincmd =
 
 let g:vim_markdown_folding_style_pythonic = 1
-set foldlevel=0
+set foldlevel=20
 
 "-------------------------------------------------------------------------------
-"Mouse
+"Mouse {{{1
 "-------------------------------------------------------------------------------
 set mouse=a
 
@@ -84,7 +95,7 @@ inoremap <M-LeftDrag> <LeftDrag>
 onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 "-------------------------------------------------------------------------------
-"Keyboard remappings
+"Keyboard remappings {{{1
 "-------------------------------------------------------------------------------
 let mapleader =" " " Make Space be the leader key
 
@@ -105,20 +116,24 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <C-Up> <C-y>
 nnoremap <C-Down> <C-e>
 
+"Tabularize to the right with selected character 
+vnoremap <expr> <Leader>. ':Tabularize /^\s*\S.*\zs' . split(&commentstring, '%s')[0] . "<CR>"
+nnoremap <expr> <Leader>. ':Tabularize /^\s*\S.*\zs' . split(&commentstring, '%s')[0] . "<CR>"
+
 "-------------------------------------------------------------------------------
-"Custom Commands
+"Custom Commands {{{1
 "-------------------------------------------------------------------------------
-:command XRemoveWhiteSpace :%s/\s\+$//e
+:command XRemoveWhiteSpace :%s/\s\+$//e "333
 :command XTabularizeComment :Tabularize /^\s*\S.*\zs " XXXDoesn't work yet...
 
 "-------------------------------------------------------------------------------
-"General plugin settings
+"General plugin settings {{{1
 "-------------------------------------------------------------------------------
 let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
 
 
 "-------------------------------------------------------------------------------
-"COC
+"COC {{{1
 "-------------------------------------------------------------------------------
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -128,7 +143,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -183,7 +198,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
-  else
+  else:set ve=all
     call CocAction('doHover')
   endif
 endfunction
@@ -226,8 +241,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
+nmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -241,7 +256,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
@@ -261,19 +276,37 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-"-------------------------------------------------------------------------------
-"Latex
-"-------------------------------------------------------------------------------
-let g:tex_flavor = 'latex'
+
 
 "-------------------------------------------------------------------------------
-"Markdown
+" Filetypes {{{1
 "-------------------------------------------------------------------------------
+
+"Latex {{{2
+let g:tex_flavor = 'latex'
+
+"Markdown {{{2
 let g:pandoc#spell#enabled = 0
 hi! link markdownH1 blue
 
+
 "-------------------------------------------------------------------------------
-"Random stuff
+" Custom functions {{{1
+"-------------------------------------------------------------------------------
+function! NeatFoldText() "{{{2
+  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+  let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+  let foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
+set foldtext=NeatFoldText()
+" }}}2
+"-------------------------------------------------------------------------------
+"Random stuff {{{1
 "-------------------------------------------------------------------------------
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support

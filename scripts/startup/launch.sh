@@ -15,27 +15,29 @@ polybar secondary &
 echo "Polybar launched..."
 
 ## Launch Programs
-i3-msg 'workspace 1; exec kitty -o background_opacity=0.9' 
+i3-msg 'workspace 1; exec kitty -o background_opacity=0.9'
 sleep 1
 i3-msg 'move scratchpad'
-sleep 1 
-
-i3-msg 'workspace 1; exec firefox'
 sleep 1
 
-i3-msg 'workspace 6; exec code $HOME/myconfig'
+# TODO: Make secondary firefox move to workspace 9
+i3-msg 'workspace 1; exec firefox; gaps current inner set 0'
+sleep 1
+i3-msg 'focus left'
+i3-msg 'move container to workspace $ws8'
+sleep 0.5
+
+i3-msg 'workspace 6; exec kitty -d $HOME/myconfig -e nvim'
 sleep 2
 i3-msg 'workspace 6; exec kitty -d $HOME/myconfig'
 sleep 1
 
-i3-msg workspace Welcome 
+i3-msg workspace Q
 sleep 1
-i3-msg 'workspace Welcome; exec code $HOME/Dropbox/Lists'
+i3-msg 'workspace Q; exec code $HOME/Dropbox/Lists'
 sleep 2
 
-i3-msg 'workspace 10; exec spotify'
-sleep 1
 i3-msg 'workspace 10; exec discord'
 sleep 5
 
-i3-msg workspace Welcome 
+i3-msg workspace Q

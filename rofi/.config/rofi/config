@@ -1,6 +1,6 @@
-rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi
+rofi.theme: /home/jfs/myconfig/rofi/.config/rofi/themes/gruvbox-dark-hard.rasi
 # rofi.font: SauceCodePro Nerd Font 12
-# rofi.font: Noto sans 12
+rofi.font: Noto sans mono 11
 rofi.lines: 20
 rofi.modi: window,run,ssh,drun,file-browser,windowcd,combi,keys,calc,emoji
 
