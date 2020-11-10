@@ -183,6 +183,7 @@ alias ll='exa -l -s=type'
 alias ls='exa -a -s=type'
 alias cc='cdAndll'
 alias pip='sudo pip'
+alias del='| xargs mv -rf {} ~/trash/'
 
 cdAndll() {aerc
 	cd $1 &&

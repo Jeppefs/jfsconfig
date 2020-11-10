@@ -2,19 +2,20 @@
 
 "-------------------------------------------------------------------------------
 "Plugins {{{1
+
 "-------------------------------------------------------------------------------
 call plug#begin()
-
 "Themes
 Plug 'gruvbox-community/gruvbox'
 
 "Visuals
-
+Plug 'junegunn/goyo.vim'
 
 "File navigation
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-ycino/fzf-preview.vim'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'voldikss/vim-floaterm'
 
 "QOL
 Plug 'machakann/vim-sandwich'
@@ -23,20 +24,24 @@ Plug 'godlygeek/tabular'
 Plug 'DougBeney/pickachu'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired' " Adds additional shortcuts
-Plug ' easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
+
+"Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 "Language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Filetypes
 Plug 'lervag/vimtex'                                   " LaTeX
-Plug 'vim-pandoc/vim-pandoc'                           " Pandoc syntax
-Plug 'vim-pandoc/vim-pandoc-syntax'                    " Markdown syntax
+"Plug 'vim-pandoc/vim-pandoc'                           " Pandoc syntax
+"Plug 'vim-pandoc/vim-pandoc-syntax'                    " Markdown syntax
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Python syntax
 Plug 'tmhedberg/SimpylFold'                            " Python folding
 
 "Ending plugins
-Plug 'ryanoasis/vim-evicons'
+" Plug 'ryanoasis/vim-evicons'
 
 call plug#end()
 "-------------------------------------------------------------------------------
@@ -61,7 +66,7 @@ set virtualedit=block
 set autoindent
 set showcmd
 set foldmethod=marker
-set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.aux,*.out,*.toc 
 
 "-------------------------------------------------------------------------------
 "Visuals {{{1
@@ -81,6 +86,7 @@ autocmd VimResized * wincmd =
 
 let g:vim_markdown_folding_style_pythonic = 1
 set foldlevel=20
+"vim augroup highlight_yank autocmd! autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000) augroup END
 
 "-------------------------------------------------------------------------------
 "Mouse {{{1
@@ -98,17 +104,21 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 "-------------------------------------------------------------------------------
 "Keyboard remappings {{{1
 "-------------------------------------------------------------------------------
-let mapleader =" " " Make Space be the leader key
+let mapleader = "\<Space>" " Let Space be mapleader
 
 "Change file using fzf_preview
 nnoremap <C-p> :FzfPreviewDirectoryFiles <ENTER>
 nnoremap <Leader>f :FzfPreviewGitFiles <ENTER>
 
-"Make ctrl+hjkl move focus in vim windows
+"Make ctrl+hjkl move focus in vim windows in normal mode
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+"Make j and k work like gk and gj but only when count is 1
+nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
+nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
 
 "???
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -118,8 +128,11 @@ nnoremap <C-Up> <C-y>
 nnoremap <C-Down> <C-e>
 
 "Tabularize to the right with selected character 
-vnoremap <expr> <Leader>. ':Tabularize /^\s*\S.*\zs' . split(&commentstring, '%s')[0] . "<CR>"
+"WHat the hell is <expr>?
 nnoremap <expr> <Leader>. ':Tabularize /^\s*\S.*\zs' . split(&commentstring, '%s')[0] . "<CR>"
+
+"Give backwards jump back to ctrl-I (COC overwrites it)
+nnoremap <C-[> <C-i>
 
 "-------------------------------------------------------------------------------
 "Custom Commands {{{1
@@ -131,11 +144,23 @@ nnoremap <expr> <Leader>. ':Tabularize /^\s*\S.*\zs' . split(&commentstring, '%s
 "General plugin settings {{{1
 "-------------------------------------------------------------------------------
 let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
+let g:UltiSnipsExpandTrigger = "Nop" "disable the ultisnips autoexpand - I use tab with coc instead
+let g:UltiSnipsSnippetDirectories=["MySnippets"]
 
+""" Floaterm {{{2
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_toggle = '<F10>'
 
-"-------------------------------------------------------------------------------
-"COC {{{1
-"-------------------------------------------------------------------------------
+""" vim-tex {{{2
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+""" COC {{{2
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -182,6 +207,12 @@ if has('patch8.1.1068')
 else
   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -278,7 +309,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
-
 "-------------------------------------------------------------------------------
 " Filetypes {{{1
 "-------------------------------------------------------------------------------
@@ -305,11 +335,6 @@ function! NeatFoldText() "{{{2
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 set foldtext=NeatFoldText()
-" }}}2
-"-------------------------------------------------------------------------------
-"Random stuff {{{1
-"-------------------------------------------------------------------------------
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
