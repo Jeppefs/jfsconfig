@@ -1,5 +1,5 @@
 #!/bin/sh
 man -k . | awk '{print $1}' | rofi -i -dmenu | xargs -r  man -Tpdf | zathura - &
 sleep 0.5
-i3-msg move container to workspace "8" 
-i3-msg focus workspace "
+i3-msg move container to workspace "H"
+i3-msg focus workspace "H"

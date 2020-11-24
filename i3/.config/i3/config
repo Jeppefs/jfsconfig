@@ -1,11 +1,17 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # --------------------------------------------------------------------------------
-# Variables
+# Variables {{{1
 # --------------------------------------------------------------------------------
 
 # Set the modifier key to the windows key
 set $mod Mod4
+
+# Script folder
+set $startup /$HOME/scripts/startup
+
+# Default gaps
+set $defaultGaps 16
 
 # Workspspaces
 set $ws1 "1"
@@ -45,11 +51,6 @@ set $wsX "X"
 set $wsY "Y"
 set $wsZ "Z"
 
-set $wsWelcome "Welcome"
-
-# Script folder
-set $startup /$HOME/scripts/startup
-
 # workspace output
 workspace $ws1 output DisplayPort-0
 workspace $ws2 output DisplayPort-0
@@ -61,7 +62,6 @@ workspace $ws7 output DisplayPort-1
 workspace $ws8 output DisplayPort-1
 workspace $ws9 output DisplayPort-1
 workspace $ws10 output DisplayPort-1
-workspace $wsWelcome output DisplayPort-1
 
 workspace $wsA output DisplayPort-0
 workspace $wsB output DisplayPort-0
@@ -70,7 +70,7 @@ workspace $wsD output DisplayPort-0
 workspace $wsE output DisplayPort-0
 workspace $wsF output DisplayPort-0
 workspace $wsG output DisplayPort-0
-workspace $wsH output DisplayPort-0
+workspace $wsH output DisplayPort-1
 workspace $wsI output DisplayPort-0
 workspace $wsJ output DisplayPort-0
 workspace $wsK output DisplayPort-0
@@ -91,7 +91,7 @@ workspace $wsY output DisplayPort-0
 workspace $wsZ output DisplayPort-0
 
 # --------------------------------------------------------------------------------
-# Font
+# Font {{{1
 # --------------------------------------------------------------------------------
 
 #font pango: Source Code Pro 10
@@ -100,7 +100,7 @@ font pango:SauceCodePro Nerd Font 8
 #font pango:Ubuntu Nerd Font 8
 
 # --------------------------------------------------------------------------------
-# Windows
+# Windows {{{1
 # --------------------------------------------------------------------------------
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -114,40 +114,24 @@ bindsym $mod+y scratchpad show
 bindsym $mod+Shift+y move scratchpad
 
 # --------------------------------------------------------------------------------
-# Application hotkey spawns
-# --------------------------------------------------------------------------------
-
-# start a terminal
-bindsym $mod+Return exec kitty
-
-# start rofi and dmenu extended
-bindsym $mod+d exec rofi -i -show drun -show-icons -icon-theme luv-icon-theme
-bindsym $mod+s exec dmenu_extended_run
-bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -i -dmenu)"
-bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
-#bindcode --release 133 exec rofi -show window -kb-cancel Super_L
-bindsym $mod+c exec rofi -i -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
-
-# --------------------------------------------------------------------------------
-# Focus
+# Focus {{{1
 # --------------------------------------------------------------------------------
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus right
-bindsym $mod+h focus down
-bindsym $mod+l focus up
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
 
 bindsym $mod+Left focus left
 bindsym $mod+Right focus right
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move right
-bindsym $mod+Shift+h move down
-bindsym $mod+Shift+l move up
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Right move right
@@ -159,13 +143,13 @@ bindsym $mod+v split v
 bindsym $mod+Shift+v split h
 bindsym $mod+f fullscreen toggle
 bindsym $mod+w layout tabbed
-bindsym $mod+shift+w layout toggle split
+bindsym $mod+shift+w layout split
 
 # toggle tiling / floating
-bindsym "$mod+Shift+comma" floating toggle
+bindsym $mod+Shift+t floating toggle
 
 # change focus between tiling / floating windows
-bindsym "$mod+comma" focus mode_toggle
+bindsym $mod+t focus mode_toggle
 
 # read 1 character and mark the current window with this character
 bindsym $mod+shift+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
@@ -175,7 +159,7 @@ bindsym $mod+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 
 # --------------------------------------------------------------------------------
-# Workspaces
+# Workspaces {{{1
 # --------------------------------------------------------------------------------
 
 bindsym $mod+space workspace back_and_forth
@@ -190,6 +174,8 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+bindsym $mod+q workspace $wsQ
 
 # mouse bindings
 bindsym --whole-window --border $mod+Shift+button5 focus
@@ -208,8 +194,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-
-bindsym $mod+g exec kitty; exec kitty
 
 # mode with all workspaces
 mode "workspaces" {
@@ -296,45 +280,50 @@ mode "workspaces" {
 
 bindsym $mod+a mode "workspaces"
 
-# --------------------------------------------------------------------------------
-# Misc
-# --------------------------------------------------------------------------------
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# See all keybindings
-# bindsym $mod+shift+m exec "i3keys web 8000"
-
+# If applications should always start in a specific workspace
+for_window [class="Spotify"] move to workspace $wsP
+for_window [class="Steam"] move to workspace $wsG
 
 # --------------------------------------------------------------------------------
-# Resize
+# Gaps and borders {{{1
+# --------------------------------------------------------------------------------
+
+# set size of border of focussed window
+for_window [class=".*"] border pixel 2
+
+# set default gaps
+gaps inner $defaultGaps
+
+# smart borders which
+smart_borders no_gaps
+
+# --------------------------------------------------------------------------------
+# Resize {{{1
 # --------------------------------------------------------------------------------
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
     # resize
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 8 px or 8 ppt
+    bindsym j resize grow height 8 px or 8 ppt
+    bindsym k resize shrink height 8 px or 8 ppt
+    bindsym l resize grow width 8 px or 8 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 8 px or 8 ppt
+    bindsym Down resize grow height 8 px or 8 ppt
+    bindsym Up resize shrink height 8 px or 8 ppt
+    bindsym Right resize grow width 8 px or 8 ppt
 
     # bindings for gap resize
-    bindsym g gaps inner current plus 5https://faq.i3wm.org/question/882/jumping-to-workspace-left-right.1.html
-    bindsym Shift+g gaps inner current minus 5
-    bindsym Shift+h gaps horizontal current minus 5
-    bindsym Shift+j gaps horizontal current plus 5
-    bindsym Shift+k gaps vertical current plus 5
-    bindsym Shift+l Gaps vertical current minus 5
+		bindsym d       gaps inner current set $defaultGaps
+		bindsym Shift+d gaps inner current set 0
+    bindsym g       gaps inner current plus 4
+    bindsym Shift+g gaps inner current minus 4
+    bindsym Shift+h gaps horizontal current minus 4
+    bindsym Shift+j gaps horizontal current plus 4
+    bindsym Shift+k gaps vertical current plus 4
+    bindsym Shift+l Gaps vertical current minus 4
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
@@ -345,23 +334,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # --------------------------------------------------------------------------------
-# Gaps and borders
+# Media {{{1
 # --------------------------------------------------------------------------------
-
-# set size of border of focussed window
-for_window [class=".*"] border pixel 2
-
-# set default gaps
-gaps inner 10
-#gaps outer 10
-
-# smart borders which
-smart_borders no_gaps
-
-# --------------------------------------------------------------------------------
-# Media
-# --------------------------------------------------------------------------------
-python tags vim
 # stop/play music
 bindsym $mod+p exec "playerctl play-pause"
 
@@ -370,13 +344,27 @@ bindsym $mod+b exec "flameshot gui"
 bindsym $mod+Shift+b exec "flameshot full -c -p ~/core/images/screenshots"
 
 # --------------------------------------------------------------------------------
-# Startup application daemons executions
+# Application hotkey spawns {{{1
 # --------------------------------------------------------------------------------
 
-exec xrandr --output DisplayPort-0 --set TearFree on
-exec xrandr --output DisplayPort-1 --set TearFree on
-exec "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 1200x240 --primary"
-exec "xrandr --output DisplayPort-1 --mode 1920x1200 --rate 60 --rotate left --left-of DisplayPort-0"
+# start a terminal
+bindsym $mod+Return exec kitty
+
+# start rofi and dmenu extended
+bindsym $mod+d exec rofi -i -show drun -show-icons -icon-theme luv-icon-theme
+bindsym $mod+s exec dmenu_extended_run
+bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -i -dmenu)"
+bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
+#bindcode --release 133 exec rofi -show window -kb-cancel Super_L
+bindsym $mod+c exec rofi -i -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
+
+# --------------------------------------------------------------------------------
+# Startup application daemons executions {{{1
+# --------------------------------------------------------------------------------
+
+exec_always "--output DisplayPort-1 --mode 1920x1200 --rate 60 --rotate left --left-of DisplayPort-0"
+exec_always "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 1200x240 --primary --set TearFree on" 
 
 exec_always nm-applet
 exec_always picom -b --config ~/.config/picom/picom.conf
@@ -384,15 +372,16 @@ exec_always dropbox -b
 exec_always syncthing -b
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot
-exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg
+exec_always ~/.fehbg &
+# exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg
 
 # --------------------------------------------------------------------------------
-# Startup scripts
+# Startup scripts {{{1
 # --------------------------------------------------------------------------------
 exec "bash $HOME/myconfig/scripts/startup/launch.sh"
 
 # --------------------------------------------------------------------------------
-# Theme
+# Theme {{{1
 # --------------------------------------------------------------------------------
 # set $bg #282828
 # set $red #cc241d
