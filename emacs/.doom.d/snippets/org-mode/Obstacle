@@ -1,0 +1,11 @@
+# key: obstacle
+# name: Obstacle
+# group: Roleplaying
+# --
+**** TODO ${1:Obstacle Name}
+- Location    :: $2
+- Visuals     :: $3
+- Description :: $4
+- Succes      :: $5
+- Failure     :: $6
+- Treasure    :: $7
