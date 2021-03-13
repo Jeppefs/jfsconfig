@@ -28,7 +28,7 @@
 ;; (desktop-save-mode 1)
 
 ;;; Keybindings
-;; (load! "keybindings.el")
+(load! "keybindings.el")
 
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 ;; (define-key evil-motion-state-map "j" 'evil-next-visual-line)
@@ -38,8 +38,25 @@
 ;; (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
 ;;; MISC
-(setq garbage-collection-messages t)
+; (setq garbage-collection-messages t)
 (add-to-list 'org-modules 'org-habit t)
+;; (setq company-idle-delay nil)
+;; (setq company-minimum-prefix-length 3)
+;; (setq company-selection-wrap-around t)
+
+;; From https://lccambiaghi.github.io/.doom.d/readme.html
+(after! company
+  (setq company-idle-delay 0.3
+        company-minimum-prefix-length 3
+  company-dabbrev-code-everywhere t
+  company-dabbrev-code-other-buffers 'all))
+        ;; company-quickhelp-delay 0.4)
+
+(after! prescient
+  (setq-default history-length 1000)
+  (setq-default prescient-history-length 1000))
+
+(after! company)
 
 ;;; Org mode
 
@@ -70,7 +87,7 @@
          "* TODO %? %^{SCHEDULED}p :IDEA:")
         ("a" "Appointment" entry
          (file+headline "appointments.org" "Diverse Aftaler")
-         "* %?\n%^T")
+         "* %?\n%^t")
         ))
 )
 ;; (setq org-capture-templates

@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home'
+let g:netrw_dirhist_4='/home/jfs/Dropbox'
+let g:netrw_dirhist_3='/home/jfs/Dropbox/Jobsoegning/CV'
+let g:netrw_dirhist_2='/home/jfs/Dropbox/Jobsoegning'
 let g:netrw_dirhist_1='/home/jfs/Dropbox/Projects/OnCall/XaltIntegration'
 let g:netrw_dirhist_0='/home/jfs/myconfig'
 let g:netrw_dirhist_9='/home/jfs/core/lists'
 let g:netrw_dirhist_8='/home/jfs/.config/spotify'
 let g:netrw_dirhist_7='/home/jfs/Downloads/dmenu-extended'
 let g:netrw_dirhist_6='/home/jfs/Downloads/dmenu-extended/docs'
-let g:netrw_dirhist_5='/home/jfs/Downloads/mutt-wizard/share'
-let g:netrw_dirhist_4='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/VisualAdjustments'
-let g:netrw_dirhist_3='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/CustomMapMarkers'
-let g:netrw_dirhist_2='/home/jfs/Downloads/UnityModManager/Pathfinder Kingmaker/Respec'

@@ -3,7 +3,11 @@
 
 (package! org-reverse-datetree)
 (package! helm-org-rifle)
+(package! better-jumper)
 
+;; Packages I do not want!
+(package! tabnine :disable t)
+(package! company-tabnine :disable t)
 ;; To install a package with Doom you must declare them here and run 'doom sync'
 ;; on the command line, then restart Emacs for the changes to take effect -- or
 ;; use 'M-x doom/reload'.
