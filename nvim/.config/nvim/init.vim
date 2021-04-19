@@ -1,14 +1,14 @@
 """jfs nvim config
 
 "-------------------------------------------------------------------------------
-"Plugins {{{1
+"Plugin {{{1
 "-------------------------------------------------------------------------------
 call plug#begin()
 
-"Themes
+"Theme
 Plug 'gruvbox-community/gruvbox'
 
-"Visuals
+"Viuals
 
 
 "File navigation
@@ -23,7 +23,8 @@ Plug 'godlygeek/tabular'
 Plug 'DougBeney/pickachu'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired' " Adds additional shortcuts
-Plug ' easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 
 "Language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -99,19 +100,28 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 "Keyboard remappings {{{1
 "-------------------------------------------------------------------------------
 let mapleader =" " " Make Space be the leader key
+let " Remap \ to easymotion 
 
 "Change file using fzf_preview
 nnoremap <C-p> :FzfPreviewDirectoryFiles <ENTER>
 nnoremap <Leader>f :FzfPreviewGitFiles <ENTER>
 
-"Make ctrl+hjkl move focus in vim windows
+"Make ctrl+hjkl move focus in vim windows in normal mode
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+inoremap <C-d> <C-h>
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>l
+
 "???
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nmap s <Plug>Sneak_s
+xmap s <Plug>Sneak_s
 
 "Move visual up or down
 nnoremap <C-Up> <C-y>
@@ -144,11 +154,11 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-<<<<<<< HEAD
+" <<<<<<< HEAD
 set cmdheight=1
-=======
+" =======
 " set cmdheight=2
->>>>>>> b10e40dd660c93ac2b675c8014507cc359143846
+" >>>>>>> b10e40dd660c93ac2b675c8014507cc359143846
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

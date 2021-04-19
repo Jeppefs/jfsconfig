@@ -7,6 +7,14 @@
     "filter_binaries": false,
     "follow_symlinks": false,
     "frequently_used": 5,
+    "global_ignore_folders": [
+        ".git",
+        ".github"
+    ],
+    "ignore_folders": [
+        "~/myconfig/.git",
+        "~/core/games"
+    ],
     "include_applications": false,
     "include_binaries": false,
     "include_hidden_files": true,
@@ -30,6 +38,7 @@
     "prompt": "Open:",
     "scan_hidden_folders": true,
     "terminal": "kitty",
+    "terminal_editor": "vim",
     "valid_extensions": [
         "*",
         "todo",
@@ -70,14 +79,6 @@
         "~/core",
         "~/Dropbox",
         "~/Downloads"
-    ],
-    "ignore_folders": [
-        "~/myconfig/.git",
-        "~/core/games"
-    ],
-    "global_ignore_folders": [
-        ".git",
-        ".github"
     ],
     "webbrowser": "xdg-open"
 }
