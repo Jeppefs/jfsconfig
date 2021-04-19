@@ -1,0 +1,13 @@
+# key: GC
+# name: GC
+# group: roleplaying
+# --
+** ${1:GC Name}
+- Visuals     :: $2
+- Mannerisms  :: $3
+- Ethics      :: $4
+- Occupation  :: $5
+- Society     :: $6
+- Goals       :: $7
+- Connections :: $8
+- Notes       :: $9

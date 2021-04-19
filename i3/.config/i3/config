@@ -143,7 +143,7 @@ bindsym $mod+v split v
 bindsym $mod+Shift+v split h
 bindsym $mod+f fullscreen toggle
 bindsym $mod+w layout tabbed
-bindsym $mod+shift+w layout split
+bindsym $mod+shift+w layout default
 
 # toggle tiling / floating
 bindsym $mod+Shift+t floating toggle

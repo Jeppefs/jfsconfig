@@ -1,1 +1,2 @@
 *.vscdb
+nvim/.config/nvim/plugged/*
