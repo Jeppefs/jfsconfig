@@ -5,6 +5,7 @@ require "plugins.bufferline"
 
 local g = vim.g
 
+vim.cmd("nnoremap <SPACE> <Nop>")
 g.mapleader = " "
 g.auto_save = false
 
