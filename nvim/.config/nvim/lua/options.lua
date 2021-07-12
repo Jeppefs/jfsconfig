@@ -36,6 +36,8 @@ vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
 
+-- vim.cmd(":command XRemoveWhiteSpace :%s/\s\+$//e")
+
 local M = {}
 
 function M.is_buffer_empty()

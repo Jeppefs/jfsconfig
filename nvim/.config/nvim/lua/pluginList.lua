@@ -14,7 +14,15 @@ packer.init {
 
 return packer.startup(
     function()
+
         use "wbthomason/packer.nvim"
+
+        use "machakann/vim-sandwich"
+        use "tpope/vim-commentary"
+
+        --
+        -- NvChad plugins
+        --
 
         use "akinsho/nvim-bufferline.lua"
 

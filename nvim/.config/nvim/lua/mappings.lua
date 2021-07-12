@@ -17,6 +17,17 @@ map("v", "x", [=[ "_x ]=], opt)
 
  this line too ]]
 --
+-- Use ALT+MOUSE1 in visual block mode (this doesn't currenly work!)
+vim.cmd("noremap <M-LeftMouse> <4-LeftMouse>")
+vim.cmd("inoremap <M-LeftMouse> <4-LeftMouse>")
+vim.cmd("onoremap <M-LeftMouse> <C-C><4-LeftMouse>")
+vim.cmd("noremap <M-LeftDrag> <LeftDrag>")
+vim.cmd("inoremap <M-LeftDrag> <LeftDrag>")
+vim.cmd("onoremap <M-LeftDrag> <C-C><LeftDrag>")
+
+-- Make j and k work like gk and gj but only when count is 1
+vim.cmd("nnoremap <expr> k v:count == 0 ? 'gk' : 'k'")
+vim.cmd("nnoremap <expr> j v:count == 0 ? 'gj' : 'j'")
 
 -- OPEN TERMINALS --
 map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- term over right
