@@ -9,9 +9,9 @@ end
 local opt = {}
 
 -- Buffers
-map("n", "<leader>bd", ":bdelete")-- Delete buffer
-map("n", "<leader>bl", ":bn") -- Go to next buffer
-map("n", "<leader>bh", ":bp") -- Go to previous buffer
+map("n", "<leader>bd", ":bdelete<CR>")-- Delete buffer
+map("n", "<leader>bl", ":bn<CR>") -- Go to next buffer
+map("n", "<leader>bh", ":bp<CR>") -- Go to previous buffer
 
 -- Use ALT+MOUSE1 in visual block mode (this doesn't currenly work!)
 vim.cmd("noremap <M-LeftMouse> <4-LeftMouse>")
