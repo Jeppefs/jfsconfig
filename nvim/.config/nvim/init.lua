@@ -15,6 +15,10 @@ g.nvchad_theme = "onedark"
 local base16 = require "base16"
 base16(base16.themes["onedark"], true)  
 
+-- g.nvchad_theme = "gruvbox"
+-- local base16 = require "base16"
+-- base16(base16.themes["nvchad-softgruv"], true)
+
 require "highlights"
 require "mappings"
 
