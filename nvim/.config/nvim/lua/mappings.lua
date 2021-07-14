@@ -8,15 +8,11 @@ end
 
 local opt = {}
 
--- dont copy any deleted text, this is disabled by default so uncomment the below mappings if you want them
---[[ remove this line
+-- Buffers
+map("n", "<leader>bd", ":bdelete")-- Delete buffer
+map("n", "<leader>bl", ":bn") -- Go to next buffer
+map("n", "<leader>bh", ":bp") -- Go to previous buffer
 
-map("n", "dd", [=[ "_dd ]=], opt)
-map("v", "dd", [=[ "_dd ]=], opt)
-map("v", "x", [=[ "_x ]=], opt)
-
- this line too ]]
---
 -- Use ALT+MOUSE1 in visual block mode (this doesn't currenly work!)
 vim.cmd("noremap <M-LeftMouse> <4-LeftMouse>")
 vim.cmd("inoremap <M-LeftMouse> <4-LeftMouse>")
