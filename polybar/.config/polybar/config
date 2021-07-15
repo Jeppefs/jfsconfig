@@ -18,11 +18,19 @@
 
 ; colors {{{1
 [colors]
-;background = ${xrdb:color0:#222}
-;background = #dd252a36
-background = #dd222222
-background-alt = #ee444444
-;foreground = ${xrdb:color7:#222}
+; Gruvbox
+; background = #dd222222
+; background-alt = #ee444444
+; foreground = #dfdfdf
+; foreground-alt = #555
+; primary = #ffb52a
+; secondary = #e60053
+; alert = #bd2c40
+
+
+; OneDark
+background = #dd1e222a
+background-alt = #eea3b8ef
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -33,12 +41,12 @@ alert = #bd2c40
 [bar/main]
 monitor = DisplayPort-0
 width = 100%
-height = 27
+fixed-center = true 
 bottom = true
+height = 27
+radius = 0.0
 ;offset-x = 3%
 ;offset-y = 1%
-radius = 6.0
-fixed-center = true 
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,20 +57,22 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 3
+module-margin-right = 3
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "SauceCodePro Nerd Font:size=8"
 
+label-separator-foreground = |
+
 modules-left = i3 xwindow
 modules-center = spotify
-modules-right = xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = pulseaudio battery memory cpu system-fan-speed temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -86,7 +96,7 @@ height = 27
 bottom = true
 ;offset-x = 3%
 ;offset-y = 1%
-radius = 6.0
+radius = 600
 fixed-center = true 
 
 background = ${colors.background}
@@ -98,11 +108,11 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 3
+module-margin-right = 3
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -118,6 +128,11 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+################################################################################
 ; module/xwindow {{{1
 [module/xwindow]
 type = internal/xwindow
@@ -246,8 +261,8 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "  "
+format-prefix-foreground = #f90000
 format-underline = #f90000
 label = %percentage:2%%
 
@@ -255,8 +270,8 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "  "
+format-prefix-foreground = #4bffdc
 format-underline = #4bffdc
 label = %percentage_used%%
 
@@ -290,7 +305,7 @@ interface = enp9s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -311,8 +326,8 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "  "
+format-prefix-foreground = #0a6cf5
 format-underline = #0a6cf5
 
 label = %date% %time%
@@ -408,24 +423,19 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
+################################################################################
 ; module/temperature {{{1
 [module/temperature]
 type = internal/temperature
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
 thermal-zone = 0
-;warn-temperature = 60
 format = <label>
+format-prefix = "  "
+format-prefix-foreground = #f50a4d
 format-underline = #f50a4d
-;format-warn = <label-warn>
-;format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
-;label-warn = %temperature-c%
-;label-warn-foreground = ${colors.secondary}
+label =  %temperature-c%
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 ; module/powermenu {{{1
@@ -464,9 +474,11 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = ~/myconfig/scripts/polybar_fan.sh
 interval = 10
+format-prefix = ✇ 
+format-prefix-foreground = #481667
 format-underline = #481667
 
-; settings {{{1
+;;; settings {{{1
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
