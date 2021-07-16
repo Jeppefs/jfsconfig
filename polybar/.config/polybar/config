@@ -27,10 +27,9 @@
 ; secondary = #e60053
 ; alert = #bd2c40
 
-
 ; OneDark
 background = #dd1e222a
-background-alt = #eea3b8ef
+background-alt = #ee2d3139
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -68,14 +67,14 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "SauceCodePro Nerd Font:size=8"
 
-label-separator-foreground = |
+separator = |
 
 modules-left = i3 xwindow
 modules-center = spotify
 modules-right = pulseaudio battery memory cpu system-fan-speed temperature date powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 1
 ;tray-background = #0063ff
 
 ;wm-restack = i3
@@ -96,7 +95,7 @@ height = 27
 bottom = true
 ;offset-x = 3%
 ;offset-y = 1%
-radius = 600
+radius = 0.0
 fixed-center = true 
 
 background = ${colors.background}
@@ -271,8 +270,8 @@ label = %percentage:2%%
 type = internal/memory
 interval = 2
 format-prefix = "  "
-format-prefix-foreground = #4bffdc
-format-underline = #4bffdc
+format-prefix-foreground = #519ABA
+format-underline = #519ABA
 label = %percentage_used%%
 
 ; module/wlan {{{1
@@ -473,10 +472,10 @@ menu-2-1-exec = menu-open-0
 [module/system-fan-speed]
 type = custom/script
 exec = ~/myconfig/scripts/polybar_fan.sh
+format-prefix = "✇  "
+format-prefix-foreground = #c882e7
+format-underline = #c882e7
 interval = 10
-format-prefix = ✇ 
-format-prefix-foreground = #481667
-format-underline = #481667
 
 ;;; settings {{{1
 [settings]
