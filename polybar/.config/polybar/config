@@ -15,6 +15,10 @@
 ;   The README contains a lot of information
 ;
 ;==========================================================
+;
+
+[global]
+base-interval = 5
 
 ; colors {{{1
 [colors]
@@ -259,7 +263,7 @@ card = intel_backlight
 ; module/cpu {{{1
 [module/cpu]
 type = internal/cpu
-interval = 2
+interval = ${global.base-interval}
 format-prefix = "  "
 format-prefix-foreground = #f90000
 format-underline = #f90000
@@ -268,7 +272,7 @@ label = %percentage:2%%
 ; module/memory {{{1
 [module/memory]
 type = internal/memory
-interval = 2
+interval = ${global.base-interval}
 format-prefix = "  "
 format-prefix-foreground = #519ABA
 format-underline = #519ABA
@@ -278,7 +282,7 @@ label = %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = wlp6s0
-interval = 3.0
+interval = ${global.base-interval}
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
@@ -317,7 +321,7 @@ format-disconnected =
 ; module/date {{{1
 [module/date]
 type = internal/date
-interval = 5
+interval = ${global.base-interval}
 
 date =
 date-alt = " %Y-%m-%d"
@@ -432,6 +436,7 @@ format = <label>
 format-prefix = "  "
 format-prefix-foreground = #f50a4d
 format-underline = #f50a4d
+interval = ${global.base-interval}
 
 label =  %temperature-c%
 
@@ -475,7 +480,7 @@ exec = ~/myconfig/scripts/polybar_fan.sh
 format-prefix = "✇  "
 format-prefix-foreground = #c882e7
 format-underline = #c882e7
-interval = 10
+interval = ${global.base-interval}
 
 ;;; settings {{{1
 [settings]
