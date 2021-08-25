@@ -368,7 +368,7 @@ exec_always "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 120
 
 exec_always nm-applet
 exec_always picom -b --config ~/.config/picom/picom.conf
-exec_always dropbox -b
+# exec_always dropbox -b
 exec_always syncthing -b
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot

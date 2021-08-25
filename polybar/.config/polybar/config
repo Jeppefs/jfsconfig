@@ -15,14 +15,25 @@
 ;   The README contains a lot of information
 ;
 ;==========================================================
+;
+
+[global]
+base-interval = 5
 
 ; colors {{{1
 [colors]
-;background = ${xrdb:color0:#222}
-;background = #dd252a36
-background = #dd222222
-background-alt = #ee444444
-;foreground = ${xrdb:color7:#222}
+; Gruvbox
+; background = #dd222222
+; background-alt = #ee444444
+; foreground = #dfdfdf
+; foreground-alt = #555
+; primary = #ffb52a
+; secondary = #e60053
+; alert = #bd2c40
+
+; OneDark
+background = #dd1e222a
+background-alt = #ee2d3139
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -33,12 +44,12 @@ alert = #bd2c40
 [bar/main]
 monitor = DisplayPort-0
 width = 100%
-height = 27
+fixed-center = true 
 bottom = true
+height = 27
+radius = 0.0
 ;offset-x = 3%
 ;offset-y = 1%
-radius = 6.0
-fixed-center = true 
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -52,20 +63,22 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 3
+module-margin-right = 3
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "SauceCodePro Nerd Font:size=8"
 
+separator = |
+
 modules-left = i3 xwindow
 modules-center = spotify
-modules-right = xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = pulseaudio battery memory cpu system-fan-speed temperature date powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 1
 ;tray-background = #0063ff
 
 ;wm-restack = i3
@@ -86,7 +99,7 @@ height = 27
 bottom = true
 ;offset-x = 3%
 ;offset-y = 1%
-radius = 6.0
+radius = 0.0
 fixed-center = true 
 
 background = ${colors.background}
@@ -101,23 +114,27 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 3
+module-margin-right = 3
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = "SauceCodePro Nerd Font:size=8"
 
+separator = |
+
 modules-left = i3
 modules-right = filesystem memory cpu system-fan-speed temperature date
-
-tray-position = right
-tray-padding = 2
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+################################################################################
 ; module/xwindow {{{1
 [module/xwindow]
 type = internal/xwindow
@@ -245,26 +262,26 @@ card = intel_backlight
 ; module/cpu {{{1
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+interval = ${global.base-interval}
+format-prefix = "  "
+format-prefix-foreground = #f90000
 format-underline = #f90000
 label = %percentage:2%%
 
 ; module/memory {{{1
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+interval = ${global.base-interval}
+format-prefix = "  "
+format-prefix-foreground = #519ABA
+format-underline = #519ABA
 label = %percentage_used%%
 
 ; module/wlan {{{1
 [module/wlan]
 type = internal/network
 interface = wlp6s0
-interval = 3.0
+interval = ${global.base-interval}
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
@@ -290,7 +307,7 @@ interface = enp9s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -303,7 +320,7 @@ format-disconnected =
 ; module/date {{{1
 [module/date]
 type = internal/date
-interval = 5
+interval = ${global.base-interval}
 
 date =
 date-alt = " %Y-%m-%d"
@@ -311,8 +328,8 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "  "
+format-prefix-foreground = #0a6cf5
 format-underline = #0a6cf5
 
 label = %date% %time%
@@ -383,49 +400,50 @@ full-at = 98
 
 format-charging = <label-charging>
 format-charging-underline = #ffb52a
+format-charging-prefix = "  "
+label-charging = %percentage%
 
-format-discharging =<label-discharging>
+format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
+format-discharging-prefix = "  "
+label-discharging = %percentage%
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+; format-full-prefix = "  "
+; format-full-prefix-foreground = ${colors.foreground-alt}
+; format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+; ramp-capacity-0 = 
+; ramp-capacity-1 = 
+; ramp-capacity-2 = 
+; ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+; animation-charging-0 = 
+; animation-charging-1 = 
+; animation-charging-2 = 
+; animation-charging-foreground = ${colors.foreground-alt}
+; animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+; animation-discharging-0 = 
+; animation-discharging-1 = 
+; animation-discharging-2 = 
+; animation-discharging-foreground = ${colors.foreground-alt}
+; animation-discharging-framerate = 750
 
+################################################################################
 ; module/temperature {{{1
 [module/temperature]
 type = internal/temperature
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
 thermal-zone = 0
-;warn-temperature = 60
 format = <label>
+format-prefix = "  "
+format-prefix-foreground = #f50a4d
 format-underline = #f50a4d
-;format-warn = <label-warn>
-;format-warn-underline = ${self.format-underline}
+interval = ${global.base-interval}
+warn-temperature = 110
 
-label = %temperature-c%
-;label-warn = %temperature-c%
-;label-warn-foreground = ${colors.secondary}
+label =  %temperature-c%
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 ; module/powermenu {{{1
@@ -463,10 +481,12 @@ menu-2-1-exec = menu-open-0
 [module/system-fan-speed]
 type = custom/script
 exec = ~/myconfig/scripts/polybar_fan.sh
-interval = 10
-format-underline = #481667
+format-prefix = "✇  "
+format-prefix-foreground = #c882e7
+format-underline = #c882e7
+interval = ${global.base-interval}
 
-; settings {{{1
+;;; settings {{{1
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
