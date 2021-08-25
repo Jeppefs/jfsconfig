@@ -9,6 +9,7 @@ M.config = function()
             "html",
             "css",
             "bash",
+            "zsh",
             "lua",
             "json",
             "python"

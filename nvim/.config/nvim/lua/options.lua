@@ -20,9 +20,18 @@ opt.numberwidth = 2
 -- opt.relativenumber = true
 
 -- for indenline
-opt.expandtab = true
-opt.shiftwidth = 2
+vim.cmd("set noexpandtab")
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.smartindent = true
+opt.list = true
+vim.cmd("set listchars=tab:>-,trail:~")
+-- vim.cmd("set listchars=tab:>-")
+-- vim.cmd("set listchars=tab:>\ ,trail:- list")
+-- vim.cmd("set list")
+-- vim.cmd(":set listchars tab:>-<CR>")
+-- opt.listchars = tab:▸·
+-- opt.listchars = eol:c
 
 -- disable builtin vim plugins
 vim.g.loaded_gzip = 0
