@@ -373,6 +373,7 @@ exec_always syncthing -b
 exec_always --no-startup-id greenclip daemon
 exec_always flameshot
 exec_always ~/.fehbg &
+exec_always syncthingtray -b
 # exec_always --no-startup-id feh --bg-scale ~/core/images/wallpapers/Answered_Prayers.jpg ~/core/images/wallpapers/fog.jpg
 
 # --------------------------------------------------------------------------------

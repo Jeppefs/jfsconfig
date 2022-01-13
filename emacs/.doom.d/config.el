@@ -56,14 +56,12 @@
   (setq-default history-length 1000)
   (setq-default prescient-history-length 1000))
 
-(after! company)
-
 ;;; Org mode
 
 (setq org-roam-directory "~/core/wiki")
 (add-hook 'after-init-hook 'org-roam-mode)
 
-(after! org
+(after! org-mode
 (setq org-directory "~/core/organisation")
 (setq org-archive-location "~/core/organisation/.archive.org::datetree/")
 (setq org-startup-folded 't)

@@ -61,7 +61,7 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 0
 
 module-margin-left = 3
 module-margin-right = 3
@@ -78,7 +78,7 @@ modules-center = spotify
 modules-right = pulseaudio battery memory cpu system-fan-speed temperature date powermenu
 
 tray-position = right
-tray-padding = 1
+tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = i3
