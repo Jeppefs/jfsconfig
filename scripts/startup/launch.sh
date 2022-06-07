@@ -41,6 +41,7 @@ i3-msg 'workspace Q; exec emacs $HOME/core/organisation/'
 sleep 2
 
 i3-msg 'workspace 10; exec discord'
-sleep 5
+sleep 1
+syncthing tray
 
 i3-msg workspace Q
