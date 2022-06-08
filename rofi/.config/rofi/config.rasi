@@ -1,9 +1,10 @@
 configuration {
     lines: 20;
     modi: "window,run,ssh,drun,windowcd,combi,keys,calc,emoji";
-    font: "Noto sans mono 11";
+    font: "Noto sans mono 12";
     sort: true;
     terminal: "kitty";
+    icon-theme: "luv-icon-theme";
 
     kb-row-up:                      "Up,Control+k";
     kb-row-down:                    "Down,Control+j";
@@ -13,10 +14,8 @@ configuration {
     kb-mode-previous:               "Shift+Left,Control+Shift+Tab,Control+h";
     kb-remove-char-back:            "BackSpace";
     /*
-    show-icons: true;
     SauceCodePro Nerd Font 12;
     levenshtein-sort: false
-    theme: /home/jfs/myconfig/rofi/.config/rofi/themes/gruvbox-dark-hard.rasi
-    icon-theme: luv-icon-theme
     */
 }
+@theme "/home/jfs/myconfig/rofi/.config/rofi/themes/rounded-nord.rasi"

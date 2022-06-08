@@ -1,5 +1,5 @@
 {
-    "abbreviate_homedir": false,
+    "abbreviate_homedir": true,
     "alias_applications": true,
     "alias_display_format": "{name}",
     "exclude_items": [],
