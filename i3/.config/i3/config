@@ -347,17 +347,18 @@ bindsym $mod+Shift+b exec "flameshot full -c -p ~/core/images/screenshots"
 # Application hotkey spawns {{{1
 # --------------------------------------------------------------------------------
 
-# start a terminal
 bindsym $mod+Return exec kitty
-
-# start rofi and dmenu extended
 bindsym $mod+d exec rofi -i -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run
-bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -i -dmenu)"
+bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/rofiScripts | rofi -i -dmenu)"
 bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
-#bindcode --release 133 exec rofi -show window -kb-cancel Super_L
 bindsym $mod+c exec rofi -i -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
+
+# --------------------------------------------------------------------------------
+# Assigns {{{1
+# --------------------------------------------------------------------------------
+assign [class="discord"] $ws10
 
 # --------------------------------------------------------------------------------
 # Startup application daemons executions {{{1
@@ -366,6 +367,7 @@ bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-m
 exec_always "--output DisplayPort-1 --mode 1920x1200 --rate 60 --rotate left --left-of DisplayPort-0"
 exec_always "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 1200x240 --primary --set TearFree on" 
 
+exec_always discord
 exec_always nm-applet
 exec_always picom -b --config ~/.config/picom/picom.conf
 # exec_always dropbox -b
@@ -379,7 +381,7 @@ exec_always syncthingtray -b
 # --------------------------------------------------------------------------------
 # Startup scripts {{{1
 # --------------------------------------------------------------------------------
-exec "bash $HOME/myconfig/scripts/startup/launch.sh"
+exec "bash $HOME/myconfig/scripts/systemScripts/launch.sh"
 
 # --------------------------------------------------------------------------------
 # Theme {{{1

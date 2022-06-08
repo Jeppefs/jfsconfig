@@ -33,14 +33,9 @@ i3-msg 'workspace 6; exec kitty -d $HOME/myconfig -e nvim'
 sleep 2
 i3-msg 'workspace 6; exec kitty -d $HOME/myconfig'
 sleep 1
+i3-msg 'exec syncthingtray'
 
 i3-msg workspace Q
 sleep 1
-# i3-msg 'workspace Q; exec code $HOME/Dropbox/Lists'
 i3-msg 'workspace Q; exec emacs $HOME/core/organisation/'
 sleep 2
-
-i3-msg 'workspace 10; exec discord'
-sleep 5
-
-i3-msg workspace Q
