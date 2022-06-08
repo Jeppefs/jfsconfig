@@ -350,7 +350,7 @@ bindsym $mod+Shift+b exec "flameshot full -c -p ~/core/images/screenshots"
 bindsym $mod+Return exec kitty
 bindsym $mod+d exec rofi -i -show drun -show-icons -icon-theme luv-icon-theme
 bindsym $mod+s exec dmenu_extended_run
-bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/runscripts | rofi -i -dmenu)"
+bindsym $mod+shift+s exec sh ~/myconfig/scripts/runscripts/"$(ls ~/myconfig/scripts/rofiScripts | rofi -i -dmenu)"
 bindsym $mod+Tab exec rofi -show window -show-icons -icon-theme luv-icon-them
 bindsym $mod+c exec rofi -i -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+shift+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
@@ -380,7 +380,7 @@ exec_always ~/.fehbg &
 # --------------------------------------------------------------------------------
 # Startup scripts {{{1
 # --------------------------------------------------------------------------------
-exec "bash $HOME/myconfig/scripts/startup/launch.sh"
+exec "bash $HOME/myconfig/scripts/systemScripts/launch.sh"
 
 # --------------------------------------------------------------------------------
 # Theme {{{1
