@@ -3,7 +3,7 @@
     "alias_applications": true,
     "alias_display_format": "{name}",
     "exclude_items": [],
-    "filebrowser": "thunar",
+    "filebrowser": "kitty",
     "fileopener": "kitty rifle",
     "filter_binaries": false,
     "follow_symlinks": false,
@@ -13,7 +13,6 @@
         ".github"
     ],
     "ignore_folders": [
-        "~/myconfig/.git",
         "~/core/games"
     ],
     "include_applications": false,

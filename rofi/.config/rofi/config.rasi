@@ -1,0 +1,22 @@
+configuration {
+    lines: 20;
+    modi: "window,run,ssh,drun,windowcd,combi,keys,calc,emoji";
+    font: "Noto sans mono 11";
+    sort: true;
+    terminal: "kitty";
+
+    kb-row-up:                      "Up,Control+k";
+    kb-row-down:                    "Down,Control+j";
+    kb-accept-entry:                "Control+m,Return,KP_Enter";
+    kb-remove-to-eol:               "Control+Shift+e";
+    kb-mode-next:                   "Shift+Right,Control+Tab";
+    kb-mode-previous:               "Shift+Left,Control+Shift+Tab,Control+h";
+    kb-remove-char-back:            "BackSpace";
+    /*
+    show-icons: true;
+    SauceCodePro Nerd Font 12;
+    levenshtein-sort: false
+    theme: /home/jfs/myconfig/rofi/.config/rofi/themes/gruvbox-dark-hard.rasi
+    icon-theme: luv-icon-theme
+    */
+}

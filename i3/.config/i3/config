@@ -367,6 +367,7 @@ assign [class="discord"] $ws10
 exec_always "--output DisplayPort-1 --mode 1920x1200 --rate 60 --rotate left --left-of DisplayPort-0"
 exec_always "xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120 --pos 1200x240 --primary --set TearFree on" 
 
+exec_always discord
 exec_always nm-applet
 exec_always picom -b --config ~/.config/picom/picom.conf
 # exec_always dropbox -b
